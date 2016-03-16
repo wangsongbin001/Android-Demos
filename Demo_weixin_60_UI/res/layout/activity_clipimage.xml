@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wang="http://schemas.android.com/apk/res/com.wang.demo_weixin_60_ui"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <com.wang.demo_weixin_60_ui.view.ClipImageLayout
+        android:id="@+id/rl_clipimage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        wang:icon="@drawable/xx"
+        wang:horizontal_padding="30dp"
+        />
+   
+
+</RelativeLayout>
