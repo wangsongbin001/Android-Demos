@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!-- 主色调 绿 -->
+    <color name="normal_green">#7ece22</color>
+    <color name="dark_green">#6bb911</color>
+    <color name="light_green">#e5f6d0</color>
+
+
+    <!-- 辅色调 蓝 黄 红 -->
+    <color name="normal_blue">#53c6ff</color>
+    <color name="dark_blue">#40bcf9</color>
+    <color name="light_blue">#31a9e5</color>
+    <color name="blue_489ef3">#489ef3</color>
+    <color name="pearl_blue">#cfd8e1</color>
+    <color name="normal_red">#ff805e</color>
+    <color name="font_red">#ff805c</color>
+    <color name="normal_yellow">#ffd761</color>
+    <color name="bg_white">#ffffff</color>
+    <color name="light_gray">#999</color>
+    <color name="dark_gray">#666</color>
+    <color name="FF2181F7">#FF2181F7</color>
+    <color name="black">#333</color>
+    <color name="light_yellow">#f4f9ee</color>
+    <color name="red_f15657">#f15657</color>
+    <color name="red_cc4e4f">#cc4e4f</color>
+    <color name="black_4f4e58">#4f4e58</color>
+    <color name="black_333333">#333333</color>
+    <color name="gray_999999">#999999</color>
+    <color name="gray_979797">#979797</color>
+    <color name="gray_795f5f">#795f5f</color>
+    <color name="gray_d8d8d8">#d8d8d8</color>
+    <color name="gray_cccccc">#cccccc</color>
+    <color name="gray_eeeeee">#eeeeee</color>
+    <color name="brown_795f5f">#795f5f</color>
+    <color name="gray_af9f9f">#af9f9f</color>
+    <color name="yellow_e6d0a2">#e6d0a2</color>
+    <color name="d3d3d3">#d3d3d3</color>
+    <color name="d3beaa">#d3beaa</color>
+    <color name="e1e1e1">#e1e1e1</color>
+    <color name="f3f3f3">#f3f3f3</color>
+    <color name="fafafa">#fafafa</color>
+    <color name="a7a6ab">#a7a6ab</color>
+    <color name="gray_7e7e7e">#7e7e7e</color>
+    <color name="bule_489ef3">#489ef3</color>
+    <color name="bule_009fe8">#009fe8</color>
+
+
+    <!-- 字体 分割线等 黑 白 -->
+    <color name="font_black">#333</color>
+    <color name="font_black_333333">#333333</color>
+    <color name="font_dark_gray">#666666</color>
+    <color name="font_light_gray">#999</color>
+    <color name="font_green">#7bd024</color>
+    <color name="font_white">#fff</color>
+    <color name="divider_e6e6e6">#e6e6e6</color>
+    <color name="divider_4f4e58">#4f4e58</color>
+    <color name="divider_ffffff">#ffffff</color>
+    <color name="bg_main">#e7efed</color>
+    <color name="bg_light_gray">#f9f9f9</color>
+    <color name="tv_long_time">#ab1a1c</color>
+    <color name="font_orange">#ffff6e10</color>
+
+    <!-- 其他 -->
+    <color name="transparent">#00000000</color>
+    <color name="font_hint_gray">#ccc</color>
+    <color name="home_background">#e7efed</color>
+    <color name="home_font_gray">#1f80b0</color>
+    <color name="white_10t">#1affffff</color>
+    <color name="white_30t">#4cffffff</color>
+    <color name="white_60t">#99ffffff</color>
+    <color name="white_50t">#7fffffff</color>
+    <color name="white_100t">#00ffffff</color>
+    <color name="font_dark_gray_2">#5f9f15</color>
+    <color name="normal_green_1">#84d329</color>
+    <color name="dark_green_1">#67a81b</color>
+    <color name="half_transparent">#b2000000</color>
+    <color name="black_30t">#4c000000</color>
+    <color name="light_blue_1">#50bbff</color>
+    <color name="light_blue_2">#81d8ff</color>
+    <color name="dot_line">#445157</color>
+    <color name="circular_red">#f43030</color>
+    <color name="launch_red">#FF0000</color>
+    <color name="bg_black">#000000</color>
+    <color name="dot_gray">#e0dfdf</color>
+    <color name="dot_white">#f4f4f4</color>
+    <color name="ship_gray">#b2b2b2</color>
+    <color name="bg_msgcount">#ff6666</color>
+    <color name="ff666666">#ff666666</color>
+    <color name="orange">#ffb624</color>
+    <color name="dark_orange">#fec552</color>
+    <color name="experience_font">#fef5db</color>
+    <color name="font_unit_gray">#b6e7ff</color>
+    <color name="font_date">#75caff</color>
+    <color name="font_gray_66">#666666</color>
+    <color name="font_gray_99">#999999</color>
+    <color name="font_light_red">#ff6623</color>
+    <color name="bg_fbf7f2">#fbf7f2</color>
+
+    <color name="bg_orange_fb7e38">#fb7e38</color>
+    <color name="bg_orange_ff6e10">#ff6e10</color>
+    <color name="bg_orange_ff7e2a">#ff7e2a</color>
+    <color name="bg_common_titlebar">#fec82e</color>
+    <color name="bg_common_titlebar_clicked">#fca400</color>
+    <color name="bg_orange_FE9526">#FE9526</color>
+    <color name="bg_orange_ffa72a">#ffa72a</color>
+    <color name="bg_orange_33ff982a">#33ff982a</color>
+    <color name="bg_yellow_fdb435">#fdb435</color>
+    <color name="bg_yellow_ffce3a">#ffce3a</color>
+    <color name="bg_yellow_ffc517">#ffc517</color>
+    <color name="bg_yellow_fff5d8">#fff5d8</color>
+    <color name="bg_yellow_fdd059">#fdd059</color>
+    <color name="bg_yellow_f5da73">#f5da73</color>
+    <color name="bg_yellow_f9e59a">#f9e59a</color>
+    <color name="bg_black_acacac">#acacac</color>
+    <color name="bg_blue_2181f7">#2181f7</color>
+    <color name="bg_blue_3399ff">#3399ff</color>
+    <color name="bg_blue_199cfc">#199cfc</color>
+    <color name="gray_80t">#cccccccc</color>
+    <color name="opaque_gray">#cccccc</color>
+    <color name="white_80t">#ccffffff</color>
+    <color name="white_90t">#e5ffffff</color>
+
+    <color name="bg_main_f5f5f5">#f5f5f5</color>
+    <color name="bg_re_upload">#4D000000</color>
+    <color name="bg_f2f2f2">#f2f2f2</color>
+    <color name="FFFF7E2A">#FFFF7E2A</color>
+    <color name="bg_orange_31ff7e2a">#31ff7e2a</color>
+    <color name="bg_black_50t">#7f000000</color>
+    <color name="font_main_color">#763f01</color>
+    <color name="error_hint_color">#f65d4d</color>
+    <color name="bg_btn_disable">#d9d9d9</color>
+    <color name="color_txt_btn_disable">#ffffff</color>
+    <color name="font_blue_href">#01aae0</color>
+    <color name="black_3f000000">#33000000</color>
+
+
+    <!-- SegmentedGroup默认 -->
+    <color name="radio_button_selected_color">#ff33b5e5</color>
+    <color name="radio_button_unselected_color">#e0e0e0</color>
+</resources>
