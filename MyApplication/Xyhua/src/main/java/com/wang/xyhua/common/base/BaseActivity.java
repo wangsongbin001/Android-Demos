@@ -19,7 +19,7 @@ public abstract class BaseActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//防止输入法键盘遮挡输入框
-        StatusBarUtils.statusBarLightMode(this);//由于本APP UI 设计状态栏为白底，许多系统是白底白字无法看清，故增加任务栏白底黑字适配
+//        StatusBarUtils.statusBarLightMode(this);//由于本APP UI 设计状态栏为白底，许多系统是白底白字无法看清，故增加任务栏白底黑字适配
         setContentView(getLayoutId());
         //ButterKnife 初始化
         ButterKnife.bind(this);

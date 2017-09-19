@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#e2d8d5</color>
+    <color name="colorPrimaryDark">#d3d6e4</color>
+    <color name="colorAccent">#dab770</color>
     <!-- 主色调 绿 -->
     <color name="normal_green">#7ece22</color>
     <color name="dark_green">#6bb911</color>
