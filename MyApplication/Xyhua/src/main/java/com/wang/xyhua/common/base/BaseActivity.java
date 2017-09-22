@@ -24,9 +24,12 @@ public abstract class BaseActivity extends Activity{
         //ButterKnife 初始化
         ButterKnife.bind(this);
 
+        initViews();
     }
     //返回布局
     protected abstract int getLayoutId();
+
+    protected void initViews(){};
 
     @Override
     protected void onDestroy() {

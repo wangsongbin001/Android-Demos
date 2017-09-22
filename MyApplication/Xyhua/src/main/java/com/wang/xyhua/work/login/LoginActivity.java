@@ -62,8 +62,15 @@ public class LoginActivity extends BaseActivity {
         return R.layout.activity_login;
     }
 
+    @Override
+    protected void initViews() {
+        super.initViews();
+        //titleLeft.setImageResource();
+        titleMiddleTextview.setText("登录界面");
+    }
+
     @OnClick({R.id.iv_login_qq, R.id.iv_login_wechat, R.id.iv_login_sina})
-    private void onClick(View v){
+    public void onClick(View v){
         switch(v.getId()){
             case R.id.iv_login_qq:
                 break;
