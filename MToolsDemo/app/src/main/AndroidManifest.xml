@@ -22,6 +22,9 @@
         </activity>
 
         <activity android:name=".common.util.PermissionActivity"></activity>
+        <activity android:name=".work.util.TestPermissionActivity">
+
+        </activity>
     </application>
 
 </manifest>

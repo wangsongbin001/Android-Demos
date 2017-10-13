@@ -34,4 +34,6 @@ public class PermissionChecker {
         //权限被拒
         return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED;
     }
+
+
 }
