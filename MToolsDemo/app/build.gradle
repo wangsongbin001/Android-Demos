@@ -16,9 +16,24 @@ android {
             }
         }
     }
+    signingConfigs {
+//        release {
+//            storeFile file("android.keystore")
+//            storePassword "android"
+//            keyAlias "android"
+//            keyPassword "android"
+//        }
+        release {
+            keyAlias 'wangso'
+            keyPassword 'wangso'
+            storeFile file('C:/Users/dell/wang.jks')
+            storePassword 'wangso'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug{
@@ -33,7 +48,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

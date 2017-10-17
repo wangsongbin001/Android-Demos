@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.PermissionActivity;
 
 import butterknife.Bind;
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
 //        PermissionActivity.startPermissionActivity(this, NeedPermissions);
         rxPermissions = new RxPermissions(this);
         checkPermissions();
+
+        Log.i("wangsongbin", "MainActivity.onCreate");
+        LogUtil.i("" + "MainActivity.onCreate");
+        LogUtil.i(getClass(), "MainActivity.onCreate");
+        LogUtil.i("TAG_MainActivity", "MainActivity.onCreate");
     }
 
     @Override
