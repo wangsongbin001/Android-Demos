@@ -1,18 +1,26 @@
 package com.wang.mtoolsdemo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.wang.mtoolsdemo.common.BB;
+import com.wang.mtoolsdemo.common.util.AppUtil;
+import com.wang.mtoolsdemo.common.util.DensityUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
-import com.wang.mtoolsdemo.common.util.PermissionActivity;
+import com.wang.mtoolsdemo.common.util.NetUtil;
+import com.wang.mtoolsdemo.common.util.SDCardUtil;
+import com.wang.mtoolsdemo.common.util.SPUtil;
+import com.wang.mtoolsdemo.common.util.ScreenUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import io.reactivex.annotations.NonNull;
+import butterknife.OnClick;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -46,18 +54,62 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
 //        PermissionActivity.startPermissionActivity(this, NeedPermissions);
-        rxPermissions = new RxPermissions(this);
-        checkPermissions();
+//        rxPermissions = new RxPermissions(this);
+//        checkPermissions();
 
-        Log.i("wangsongbin", "MainActivity.onCreate");
-        LogUtil.i("" + "MainActivity.onCreate");
-        LogUtil.i(getClass(), "MainActivity.onCreate");
-        LogUtil.i("TAG_MainActivity", "MainActivity.onCreate");
+//        Log.i("wangsongbin", "MainActivity.onCreate");
+//        LogUtil.i("" + "MainActivity.onCreate");
+//        try{
+//            LogUtil.i(BB.class, "MainActivity.onCreate");
+//        }catch (Exception e){
+//            Log.i("wangsongbin", "exception:" + e.getMessage());
+//        }
+//        LogUtil.i("TAG_MainActivity", "MainActivity.onCreate");
+
+        SPUtil.put(getApplicationContext(), "name", "wangsongbin");
+        SPUtil.put(getApplicationContext(), "age", 25);
+        SPUtil.put(getApplicationContext(), "man", true);
+        SPUtil.put(getApplicationContext(), "weight", 65.5);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        StringBuilder sb = new StringBuilder();
+        sb.append(" name:" + SPUtil.get(getApplicationContext(), "name", "wangsong"));
+        sb.append(" age:" + SPUtil.get(getApplicationContext(), "age", 2));
+        sb.append(" man:" + SPUtil.get(getApplicationContext(), "man", false));
+        sb.append(" weight:" + SPUtil.get(getApplicationContext(), "weight", 5.5));
+
+        LogUtil.i("wangsongbin", "data-->" + sb.toString());
+        LogUtil.i("wangsongbin", "NetUtil," + NetUtil.isConnected(getApplicationContext())
+                + "," + NetUtil.isWifi(getApplicationContext()));
+        LogUtil.i("wangsongbin", "AppUtil," + AppUtil.getAppName(getApplicationContext())
+                + "," + AppUtil.getAppVersionName(getApplicationContext())
+                + "," + AppUtil.getAppVersionCode(getApplicationContext()));
+        LogUtil.i("wangsongbin", "densityUtil," + DensityUtil.dp2px(getApplicationContext(), 12)
+                + "," + DensityUtil.px2dp(getApplicationContext(), DensityUtil.dp2px(getApplicationContext(), 12))
+                + "," + DensityUtil.sp2px(getApplicationContext(), 12)
+                + "," + DensityUtil.px2sp(getApplicationContext(), DensityUtil.sp2px(getApplicationContext(), 12)));
+        LogUtil.i("wangsongbin", "ScreenUtil," + ScreenUtil.getScreenHeight(getApplicationContext())
+                + "," + ScreenUtil.getScreenWidth(getApplicationContext())
+                + "," + ScreenUtil.getStatusBarHeight(getApplicationContext()));
+        LogUtil.i("wangsongbin", "SDCardUtil," + SDCardUtil.isSdcardEnable()
+                + "," + SDCardUtil.getSdcardPath()
+                + "," + SDCardUtil.getSdcardAvailableSize()
+                + "," + SDCardUtil.getRootPath());
+    }
+
+    @OnClick({R.id.sample_text})
+    public void onClick(View view){
+        LogUtil.i("wangsongbin", "onClick");
+        NetUtil.openNetSetting(this, 1001);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        LogUtil.i("wangsongbin", "requestCode-->" + requestCode);
     }
 
     @Override

@@ -15,12 +15,6 @@ public class LogUtil {
         i(defutlt_tag, msg);
     }
 
-    public static void i(String tag, String msg){
-        if(!"release".equals(BuildConfig.BUILD_TYPE)){
-            Log.i(tag, msg);
-        }
-    }
-
     public static void i(Class clazz, String msg){
         if(clazz == null){
             return;
@@ -29,14 +23,14 @@ public class LogUtil {
         i(tag, msg);
     }
 
-    public static void d(String msg){
-        d(defutlt_tag, msg);
-    }
-
-    public static void d(String tag, String msg){
+    public static void i(String tag, String msg){
         if(!"release".equals(BuildConfig.BUILD_TYPE)){
             Log.i(tag, msg);
         }
+    }
+
+    public static void d(String msg){
+        d(defutlt_tag, msg);
     }
 
     public static void d(Class clazz, String msg){
@@ -45,6 +39,12 @@ public class LogUtil {
         }
         String tag = clazz.getSimpleName();
         d(tag, msg);
+    }
+
+    public static void d(String tag, String msg){
+        if(!"release".equals(BuildConfig.BUILD_TYPE)){
+            Log.i(tag, msg);
+        }
     }
 
 }
