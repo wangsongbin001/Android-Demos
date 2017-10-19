@@ -10,13 +10,9 @@ import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wang.mtoolsdemo.common.BB;
-import com.wang.mtoolsdemo.common.util.AppUtil;
-import com.wang.mtoolsdemo.common.util.DensityUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
-import com.wang.mtoolsdemo.common.util.NetUtil;
-import com.wang.mtoolsdemo.common.util.SDCardUtil;
 import com.wang.mtoolsdemo.common.util.SPUtil;
-import com.wang.mtoolsdemo.common.util.ScreenUtil;
+import com.wang.mtoolsdemo.common.view.ImagesShowActivitiy;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -75,35 +71,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        StringBuilder sb = new StringBuilder();
-        sb.append(" name:" + SPUtil.get(getApplicationContext(), "name", "wangsong"));
-        sb.append(" age:" + SPUtil.get(getApplicationContext(), "age", 2));
-        sb.append(" man:" + SPUtil.get(getApplicationContext(), "man", false));
-        sb.append(" weight:" + SPUtil.get(getApplicationContext(), "weight", 5.5));
-
-        LogUtil.i("wangsongbin", "data-->" + sb.toString());
-        LogUtil.i("wangsongbin", "NetUtil," + NetUtil.isConnected(getApplicationContext())
-                + "," + NetUtil.isWifi(getApplicationContext()));
-        LogUtil.i("wangsongbin", "AppUtil," + AppUtil.getAppName(getApplicationContext())
-                + "," + AppUtil.getAppVersionName(getApplicationContext())
-                + "," + AppUtil.getAppVersionCode(getApplicationContext()));
-        LogUtil.i("wangsongbin", "densityUtil," + DensityUtil.dp2px(getApplicationContext(), 12)
-                + "," + DensityUtil.px2dp(getApplicationContext(), DensityUtil.dp2px(getApplicationContext(), 12))
-                + "," + DensityUtil.sp2px(getApplicationContext(), 12)
-                + "," + DensityUtil.px2sp(getApplicationContext(), DensityUtil.sp2px(getApplicationContext(), 12)));
-        LogUtil.i("wangsongbin", "ScreenUtil," + ScreenUtil.getScreenHeight(getApplicationContext())
-                + "," + ScreenUtil.getScreenWidth(getApplicationContext())
-                + "," + ScreenUtil.getStatusBarHeight(getApplicationContext()));
-        LogUtil.i("wangsongbin", "SDCardUtil," + SDCardUtil.isSdcardEnable()
-                + "," + SDCardUtil.getSdcardPath()
-                + "," + SDCardUtil.getSdcardAvailableSize()
-                + "," + SDCardUtil.getRootPath());
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(" name:" + SPUtil.get(getApplicationContext(), "name", "wangsong"));
+//        sb.append(" age:" + SPUtil.get(getApplicationContext(), "age", 2));
+//        sb.append(" man:" + SPUtil.get(getApplicationContext(), "man", false));
+//        sb.append(" weight:" + SPUtil.get(getApplicationContext(), "weight", 5.5));
+//
+//        LogUtil.i("wangsongbin", "data-->" + sb.toString());
+//        LogUtil.i("wangsongbin", "NetUtil," + NetUtil.isConnected(getApplicationContext())
+//                + "," + NetUtil.isWifi(getApplicationContext()));
+//        LogUtil.i("wangsongbin", "AppUtil," + AppUtil.getAppName(getApplicationContext())
+//                + "," + AppUtil.getAppVersionName(getApplicationContext())
+//                + "," + AppUtil.getAppVersionCode(getApplicationContext()));
+//        LogUtil.i("wangsongbin", "densityUtil," + DensityUtil.dp2px(getApplicationContext(), 12)
+//                + "," + DensityUtil.px2dp(getApplicationContext(), DensityUtil.dp2px(getApplicationContext(), 12))
+//                + "," + DensityUtil.sp2px(getApplicationContext(), 12)
+//                + "," + DensityUtil.px2sp(getApplicationContext(), DensityUtil.sp2px(getApplicationContext(), 12)));
+//        LogUtil.i("wangsongbin", "ScreenUtil," + ScreenUtil.getScreenHeight(getApplicationContext())
+//                + "," + ScreenUtil.getScreenWidth(getApplicationContext())
+//                + "," + ScreenUtil.getStatusBarHeight(getApplicationContext()));
+//        LogUtil.i("wangsongbin", "SDCardUtil," + SDCardUtil.isSdcardEnable()
+//                + "," + SDCardUtil.getSdcardPath()
+//                + "," + SDCardUtil.getSdcardAvailableSize()
+//                + "," + SDCardUtil.getRootPath());
     }
+    String[] sourceUrl = new String[]{
+            "","","","","","","","","",""
+    };
 
     @OnClick({R.id.sample_text})
     public void onClick(View view){
-        LogUtil.i("wangsongbin", "onClick");
-        NetUtil.openNetSetting(this, 1001);
+//        LogUtil.i("wangsongbin", "onClick");
+//        NetUtil.openNetSetting(this, 1001);
+        Intent intent = new Intent(this, ImagesShowActivitiy.class);
+        intent.putExtra(ImagesShowActivitiy.SOURCE_KEY, BB.data);
+        startActivity(intent);
     }
 
     @Override

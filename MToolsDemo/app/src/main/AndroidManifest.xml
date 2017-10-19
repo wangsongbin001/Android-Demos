@@ -27,6 +27,8 @@
         <activity android:name=".work.util.TestPermissionActivity">
 
         </activity>
+        <activity android:name=".common.view.ImagesShowActivitiy"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
