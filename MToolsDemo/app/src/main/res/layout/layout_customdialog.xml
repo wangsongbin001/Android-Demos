@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_corner4_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="我是标题"
+            android:textColor="#4f4e58"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:id="@+id/fl_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/tv_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="内容的第一行是这样的\n内容的第二行"
+                android:textColor="#999999"
+                android:textSize="14sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_bottom_btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <Button
+                android:id="@+id/btn_custom_dialog_cancle"
+                android:layout_height="40dp"
+                android:layout_width="120dp"
+                android:background="@drawable/selector_button_corner4_white"
+                android:textColor="@drawable/selector_button_corner4_white"
+                android:layout_gravity="left"
+                android:text="取消"/>
+
+            <Button
+                android:id="@+id/btn_custom_dialog_sure"
+                android:layout_height="40dp"
+                android:layout_width="120dp"
+                android:background="@drawable/selector_button_corner4_red"
+                android:layout_gravity="right"
+                android:text="确定"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:src="@mipmap/edt_delete_all"/>
+
+</FrameLayout>

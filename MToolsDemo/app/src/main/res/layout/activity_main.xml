@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.wang.mtoolsdemo.MainActivity">
 
+    <Button
+        android:id="@+id/btn_matrinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="matrinal"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/btn_matrinal"
+        android:id="@+id/btn_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom"/>
+
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"

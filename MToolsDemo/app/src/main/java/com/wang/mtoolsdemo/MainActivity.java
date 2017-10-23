@@ -1,15 +1,19 @@
 package com.wang.mtoolsdemo;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wang.mtoolsdemo.common.BB;
+import com.wang.mtoolsdemo.common.util.DialogUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.SPUtil;
 import com.wang.mtoolsdemo.common.view.ImagesShowActivitiy;
@@ -23,6 +27,7 @@ import io.reactivex.functions.Consumer;
 public class MainActivity extends AppCompatActivity {
 
     CompositeDisposable compositeDisposable;
+
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
@@ -30,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.sample_text)
     TextView sampleText;
+    @Bind(R.id.btn_matrinal)
+    Button btnMatrinal;
+    @Bind(R.id.btn_custom)
+    Button btnCustom;
 
     private String[] NeedPermissions = new String[]{
             Manifest.permission.RECORD_AUDIO,
@@ -49,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+
+        getPreferences(Context.MODE_PRIVATE);
 //        PermissionActivity.startPermissionActivity(this, NeedPermissions);
 //        rxPermissions = new RxPermissions(this);
 //        checkPermissions();
@@ -95,17 +106,37 @@ public class MainActivity extends AppCompatActivity {
 //                + "," + SDCardUtil.getSdcardAvailableSize()
 //                + "," + SDCardUtil.getRootPath());
     }
-    String[] sourceUrl = new String[]{
-            "","","","","","","","","",""
-    };
 
-    @OnClick({R.id.sample_text})
-    public void onClick(View view){
+    String[] sourceUrl = new String[]{
+            "", "", "", "", "", "", "", "", "", ""
+    };
+    AlertDialog mInstance;
+    @OnClick({R.id.sample_text, R.id.btn_custom, R.id.btn_matrinal})
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btn_custom:
+                if(mInstance == null){
+                    mInstance = DialogUtil.showCustomDialog(this, "≤‚ ‘title","test message", "sure", null, "cancel", null);
+                }else{
+                    mInstance.dismiss();
+                    mInstance = null;
+                }
+
+                break;
+            case R.id.btn_matrinal:
+                if(mInstance == null){
+                    mInstance = DialogUtil.showDialog(this, "≤‚ ‘title","test message", "sure", null, "cancel", null);
+                }else{
+                    mInstance.dismiss();
+                    mInstance = null;
+                }
+                break;
+        }
 //        LogUtil.i("wangsongbin", "onClick");
 //        NetUtil.openNetSetting(this, 1001);
-        Intent intent = new Intent(this, ImagesShowActivitiy.class);
-        intent.putExtra(ImagesShowActivitiy.SOURCE_KEY, BB.data);
-        startActivity(intent);
+//        Intent intent = new Intent(this, ImagesShowActivitiy.class);
+//        intent.putExtra(ImagesShowActivitiy.SOURCE_KEY, BB.data);
+//        startActivity(intent);
     }
 
     @Override
@@ -117,22 +148,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(compositeDisposable != null){
+        if (compositeDisposable != null) {
             compositeDisposable.dispose();
         }
     }
 
-    private void checkPermissions(){
-        if(!rxPermissions.isGranted(NeedPermissions[0])
-                || !rxPermissions.isGranted(NeedPermissions[1])){
-            compositeDisposable.add(rxPermissions.request(NeedPermissions[0],NeedPermissions[1])
+    private void checkPermissions() {
+        if (!rxPermissions.isGranted(NeedPermissions[0])
+                || !rxPermissions.isGranted(NeedPermissions[1])) {
+            compositeDisposable.add(rxPermissions.request(NeedPermissions[0], NeedPermissions[1])
                     .subscribe(new Consumer<Boolean>() {
                         @Override
                         public void accept(Boolean granted) throws Exception {
                             Log.i("wangsongbin", "granted:" + granted);
-                            if(granted){
+                            if (granted) {
                                 Log.i("wangsongbin", "");
-                            }else{
+                            } else {
 
                             }
                         }

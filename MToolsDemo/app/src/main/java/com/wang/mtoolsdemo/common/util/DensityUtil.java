@@ -22,11 +22,11 @@ public class DensityUtil {
 
     public static int px2dp(Context context, int px){
         float density = context.getResources().getDisplayMetrics().density;
-        return (int) (px/density);
+        return (int) (px/density) + 1;
     }
 
     public static int px2sp(Context context, int px){
         float scale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (px/scale);
+        return (int) (px/scale) + 1;
     }
 }

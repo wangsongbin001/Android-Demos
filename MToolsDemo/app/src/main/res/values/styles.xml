@@ -8,4 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="dialog_custom" parent="android:style/Theme.Dialog">
+        <!-- ´°¿Ú±³¾° -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- ÊÇ·ñÈ¥µô±êÌâ -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- ÆÁÄ»±³¾°ÊÇ·ñ°µµ­ -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- ÆÁÄ»±³¾°°µµ­³Ì¶È -->
+        <item name="android:backgroundDimAmount">0.3</item>
+        <!-- ´°¿ÚÍâ´¥ÃþÊ±ÊÇ·ñ¹Ø±Õ´°¿Ú -->
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
 </resources>
