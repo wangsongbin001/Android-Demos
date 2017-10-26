@@ -12,11 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
-import com.wang.mtoolsdemo.common.BB;
 import com.wang.mtoolsdemo.common.util.DialogUtil;
+import com.wang.mtoolsdemo.common.util.DownloadManagerUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.SPUtil;
-import com.wang.mtoolsdemo.common.view.ImagesShowActivitiy;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnMatrinal;
     @Bind(R.id.btn_custom)
     Button btnCustom;
+    @Bind(R.id.btn_md)
+    Button btnMd;
 
     private String[] NeedPermissions = new String[]{
             Manifest.permission.RECORD_AUDIO,
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         SPUtil.put(getApplicationContext(), "age", 25);
         SPUtil.put(getApplicationContext(), "man", true);
         SPUtil.put(getApplicationContext(), "weight", 65.5);
+
+        Integer integer;
     }
 
     @Override
@@ -111,25 +114,31 @@ public class MainActivity extends AppCompatActivity {
             "", "", "", "", "", "", "", "", "", ""
     };
     AlertDialog mInstance;
-    @OnClick({R.id.sample_text, R.id.btn_custom, R.id.btn_matrinal})
+
+    @OnClick({R.id.sample_text, R.id.btn_custom, R.id.btn_matrinal, R.id.btn_md})
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.btn_custom:
-                if(mInstance == null){
-                    mInstance = DialogUtil.showCustomDialog(this, "²âÊÔtitle","test message", "sure", null, "cancel", null);
-                }else{
+                if (mInstance == null) {
+                    mInstance = DialogUtil.showCustomDialog(this, "æµ‹è¯•title", "test message", "sure", null, "cancel", null);
+                } else {
                     mInstance.dismiss();
                     mInstance = null;
                 }
 
                 break;
             case R.id.btn_matrinal:
-                if(mInstance == null){
-                    mInstance = DialogUtil.showDialog(this, "²âÊÔtitle","test message", "sure", null, "cancel", null);
-                }else{
+                if (mInstance == null) {
+                    mInstance = DialogUtil.showDialog(this, "æµ‹è¯•title", "test message", "sure", null, "cancel", null);
+                } else {
                     mInstance.dismiss();
                     mInstance = null;
                 }
+                break;
+            case R.id.btn_md:
+                Log.i("wangsongbin", "enable" + DownloadManagerUtil.isEnable(this));
+                //open
+                DownloadManagerUtil.enableDownloadManager(this);
                 break;
         }
 //        LogUtil.i("wangsongbin", "onClick");

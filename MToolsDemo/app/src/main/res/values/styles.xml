@@ -9,15 +9,15 @@
     </style>
 
     <style name="dialog_custom" parent="android:style/Theme.Dialog">
-        <!-- ´°¿Ú±³¾° -->
+        <!-- çª—å£èƒŒæ™¯ -->
         <item name="android:windowBackground">@android:color/transparent</item>
-        <!-- ÊÇ·ñÈ¥µô±êÌâ -->
+        <!-- æ˜¯å¦å»æ‰æ ‡é¢˜ -->
         <item name="android:windowNoTitle">true</item>
-        <!-- ÆÁÄ»±³¾°ÊÇ·ñ°µµ­ -->
+        <!-- å±å¹•èƒŒæ™¯æ˜¯å¦æš—æ·¡ -->
         <item name="android:backgroundDimEnabled">true</item>
-        <!-- ÆÁÄ»±³¾°°µµ­³Ì¶È -->
+        <!-- å±å¹•èƒŒæ™¯æš—æ·¡ç¨‹åº¦ -->
         <item name="android:backgroundDimAmount">0.3</item>
-        <!-- ´°¿ÚÍâ´¥ÃşÊ±ÊÇ·ñ¹Ø±Õ´°¿Ú -->
+        <!-- çª—å£å¤–è§¦æ‘¸æ—¶æ˜¯å¦å…³é—­çª—å£ -->
         <item name="android:windowCloseOnTouchOutside">false</item>
     </style>
 
