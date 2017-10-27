@@ -105,6 +105,7 @@ public class ImagesShowActivitiy extends Activity {
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             PinchImageView pv = (PinchImageView) object;
+            mCacheView.add(pv);
             container.removeView(pv);
         }
 
