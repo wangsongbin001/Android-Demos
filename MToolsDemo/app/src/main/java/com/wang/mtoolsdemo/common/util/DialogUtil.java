@@ -129,4 +129,12 @@ public class DialogUtil {
         mInstance.setCancelable(true);
         return mInstance;
     }
+
+    public static AlertDialog showCreditDialog(Context context){
+        final AlertDialog mInstance = new AlertDialog.Builder(context, R.style.dialog_custom)
+                .setView(R.layout.layout_credit_dialog)
+                .create();
+        mInstance.show();
+        return mInstance;
+    }
 }

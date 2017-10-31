@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        
+        <FrameLayout
+            android:id="@+id/fl_center"
+            android:layout_width="265dp"
+            android:layout_height="368dp"
+            android:layout_centerInParent="true"
+            android:paddingBottom="30dp">
+                
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/img_hb"
+                    android:scaleType="fitXY"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_marginTop="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="借款发放成功"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_marginTop="32dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:gravity="center"
+                        android:textColor="#e45454"
+                        android:text="¥ 100"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#8ccf5858"
+                        android:text="提额卷"/>
+
+
+                    <TextView
+                        android:layout_marginTop="26dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp"
+                        android:text="恭喜你获得100元提额卷\n下次借款可用"/>
+
+
+                    <Button
+                        android:layout_marginTop="46dp"
+                        android:layout_width="130dp"
+                        android:layout_height="36dp"
+                        android:text="立即使用"
+                        android:textSize="16sp"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/bg_white_cornor"/>
+
+                </LinearLayout>
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/fl_center"
+            android:src="@mipmap/img_hb_close"/>
+
+</RelativeLayout>

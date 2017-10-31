@@ -136,9 +136,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_md:
-                Log.i("wangsongbin", "enable" + DownloadManagerUtil.isEnable(this));
-                //open
-                DownloadManagerUtil.enableDownloadManager(this);
+//                Log.i("wangsongbin", "enable" + DownloadManagerUtil.isEnable(this));
+//                //open
+//                DownloadManagerUtil.enableDownloadManager(this);
+                if (mInstance == null) {
+                    mInstance = DialogUtil.showCreditDialog(this);
+                } else {
+                    mInstance.dismiss();
+                    mInstance = null;
+                }
                 break;
         }
 //        LogUtil.i("wangsongbin", "onClick");

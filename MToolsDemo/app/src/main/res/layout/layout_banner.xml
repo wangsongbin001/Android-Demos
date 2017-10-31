@@ -3,30 +3,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v4.view.ViewPager
+    <com.wang.mtoolsdemo.common.banner.BannerViewPager
         android:id="@+id/id_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="#44000000"
         android:layout_gravity="bottom">
 
-        <TextView
-            android:id="@+id/id_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/circle_index"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone" />
 
         <TextView
-            android:id="@+id/id_index"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1/5"/>
+            android:id="@+id/num_index"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:background="@drawable/black_background"
+            android:gravity="center"
+            android:text="1/1"
+            android:textColor="#ffffff"
+            android:visibility="gone" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/circle_index"
+            android:background="#44000000"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
+            <TextView
+                android:id="@+id/id_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1000"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/num_index_inside"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="1/1"
+                    android:textColor="#ffffff"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/circle_index_inside"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/banner_default_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
 </FrameLayout>
