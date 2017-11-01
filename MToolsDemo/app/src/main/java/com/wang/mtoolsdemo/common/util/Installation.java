@@ -1,4 +1,4 @@
-package com.wang.mtoolsdemo.work;
+package com.wang.mtoolsdemo.common.util;
 
 import android.content.Context;
 
@@ -9,10 +9,10 @@ import java.io.RandomAccessFile;
 import java.util.UUID;
 
 /**
- * Created by dell on 2017/10/12.
+ * Created by dell on 2017/11/1.
  */
 
-public class AA {
+public class Installation {
 
     private static String sID = null;
     private static final String INSTALLATION = "INSTALLATION";

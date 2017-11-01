@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -71,49 +72,49 @@ public class DialogUtil {
         Button btn_sure = mWindow.findViewById(R.id.btn_custom_dialog_sure);
         ImageView iv_cancel = mWindow.findViewById(R.id.iv_cancle);
 
-        if(!TextUtils.isEmpty(title)){
+        if (!TextUtils.isEmpty(title)) {
             tv_title.setText(title);
-        }else{
+        } else {
             tv_title.setVisibility(View.GONE);
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) fl_body.getLayoutParams();
             lp.topMargin = 0;
             fl_body.setLayoutParams(lp);
         }
 
-        if(!TextUtils.isEmpty(msg)){
+        if (!TextUtils.isEmpty(msg)) {
             tv_msg.setText(msg);
-        }else{
+        } else {
             tv_msg.setVisibility(View.GONE);
         }
 
-        if(TextUtils.isEmpty(negativeTxt) && !TextUtils.isEmpty(positiveTxt)){
+        if (TextUtils.isEmpty(negativeTxt) && !TextUtils.isEmpty(positiveTxt)) {
             btn_cancel.setVisibility(View.GONE);
             FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) btn_sure.getLayoutParams();
             params.width = DensityUtil.dp2px(context, 171);
             params.gravity = Gravity.CENTER_HORIZONTAL;
             btn_sure.setLayoutParams(params);
-        }else if(TextUtils.isEmpty(negativeTxt) && TextUtils.isEmpty(positiveTxt)){
+        } else if (TextUtils.isEmpty(negativeTxt) && TextUtils.isEmpty(positiveTxt)) {
             fl_bottom_btns.setVisibility(View.GONE);
         }
         btn_cancel.setText(negativeTxt);
         btn_sure.setText(positiveTxt);
-        View.OnClickListener onCancel = new View.OnClickListener(){
+        View.OnClickListener onCancel = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(negativeClicker != null){
+                if (negativeClicker != null) {
                     negativeClicker.onClick(mInstance, DialogInterface.BUTTON_NEGATIVE);
-                }else{
+                } else {
                     mInstance.dismiss();
                 }
             }
         };
 
-        View.OnClickListener onSure = new View.OnClickListener(){
+        View.OnClickListener onSure = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(positiveClicker != null){
+                if (positiveClicker != null) {
                     positiveClicker.onClick(mInstance, DialogInterface.BUTTON_POSITIVE);
-                }else{
+                } else {
                     mInstance.dismiss();
                 }
             }
@@ -130,11 +131,44 @@ public class DialogUtil {
         return mInstance;
     }
 
-    public static AlertDialog showCreditDialog(Context context){
-        final AlertDialog mInstance = new AlertDialog.Builder(context, R.style.dialog_custom)
-                .setView(R.layout.layout_credit_dialog)
-                .create();
+    public static AlertDialog showCreditDialog(Context context,
+                                               String positiveTxt,
+                                               final DialogInterface.OnClickListener positiveClicker) {
+        final AlertDialog mInstance = new AlertDialog.Builder(context, R.style.dialog_custom).create();
         mInstance.show();
+        Window mWindow = mInstance.getWindow();
+        mWindow.setContentView(R.layout.layout_credit_dialog);
+
+        TextView tv_quota = mWindow.findViewById(R.id.tv_quota);
+        Button btn_use = mWindow.findViewById(R.id.btn_use);
+        ImageView iv_cancel = mWindow.findViewById(R.id.iv_cancel);
+
+        if(!TextUtils.isEmpty(positiveTxt)){
+            btn_use.setText(positiveTxt);
+        }else {
+            btn_use.setText("¡¢º¥ π”√");
+        }
+        View.OnClickListener onSure = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (positiveClicker != null) {
+                    positiveClicker.onClick(mInstance, DialogInterface.BUTTON_POSITIVE);
+                } else {
+                    mInstance.dismiss();
+                }
+            }
+        };
+        btn_use.setOnClickListener(onSure);
+        iv_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mInstance.dismiss();
+            }
+        });
+//        WindowManager.LayoutParams params = mWindow.getAttributes();
+//        mWindow.setAttributes(params);
+        mInstance.setCanceledOnTouchOutside(true);
+        mInstance.setCancelable(true);
         return mInstance;
     }
 }

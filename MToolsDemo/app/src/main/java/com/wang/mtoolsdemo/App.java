@@ -1,7 +1,9 @@
 package com.wang.mtoolsdemo;
 
 import android.app.Application;
+import android.os.Process;
 
+import com.wang.mtoolsdemo.common.util.AppUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
 
 import java.util.ArrayList;
@@ -35,5 +37,8 @@ public class App extends Application{
 
         LogUtil.i("wangsongbin", mUrls.toString());
         LogUtil.i("wangsongbin", mUrls.toString());
+        if(getPackageName().equals(AppUtil.getCurrentProcessName(this))){
+            //Ö÷½ø³Ì
+        }
     }
 }

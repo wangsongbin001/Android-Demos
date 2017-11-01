@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MToolsDemo</string>
+
+    <string name="coupon_improve_tips">借款发放成功</string>
 </resources>

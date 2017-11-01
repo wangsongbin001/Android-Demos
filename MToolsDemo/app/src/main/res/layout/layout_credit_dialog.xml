@@ -3,17 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        
         <FrameLayout
             android:id="@+id/fl_center"
-            android:layout_width="265dp"
-            android:layout_height="368dp"
-            android:layout_centerInParent="true"
-            android:paddingBottom="30dp">
-                
+            android:layout_width="268dp"
+            android:layout_height="340dp"
+            android:layout_centerInParent="true">
+
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="268dp"
+                    android:layout_height="340dp"
                     android:src="@mipmap/img_hb"
                     android:scaleType="fitXY"/>
 
@@ -24,7 +22,7 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="38dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="借款发放成功"
@@ -32,34 +30,34 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:layout_marginTop="32dp"
+                        android:id="@+id/tv_quota"
+                        android:layout_marginTop="26dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
                         android:gravity="center"
-                        android:textColor="#e45454"
+                        android:textColor="#f15657"
                         android:text="¥ 100"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:textColor="#8ccf5858"
+                        android:textColor="#f15657"
                         android:text="提额卷"/>
 
-
                     <TextView
-                        android:layout_marginTop="26dp"
+                        android:layout_marginTop="28dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textColor="#ffffff"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:text="恭喜你获得100元提额卷\n下次借款可用"/>
 
-
                     <Button
-                        android:layout_marginTop="46dp"
+                        android:id="@+id/btn_use"
+                        android:layout_marginTop="40dp"
                         android:layout_width="130dp"
                         android:layout_height="36dp"
                         android:text="立即使用"
@@ -71,6 +69,8 @@
         </FrameLayout>
 
         <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_marginTop="44dp"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_centerHorizontal="true"

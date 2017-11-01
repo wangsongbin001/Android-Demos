@@ -2,6 +2,7 @@ package com.wang.mtoolsdemo;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -12,10 +13,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.wang.mtoolsdemo.common.util.AppUtil;
 import com.wang.mtoolsdemo.common.util.DialogUtil;
 import com.wang.mtoolsdemo.common.util.DownloadManagerUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.SPUtil;
+import com.wang.mtoolsdemo.work.SecondActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -80,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
         SPUtil.put(getApplicationContext(), "weight", 65.5);
 
         Integer integer;
+        try{
+        AppUtil.getDeviceId(this);
+        }catch (Exception e){
+            Log.i("wangsongbin", "msg:" + e.getMessage());
+        }
     }
 
     @Override
@@ -140,7 +148,14 @@ public class MainActivity extends AppCompatActivity {
 //                //open
 //                DownloadManagerUtil.enableDownloadManager(this);
                 if (mInstance == null) {
-                    mInstance = DialogUtil.showCreditDialog(this);
+                    mInstance = DialogUtil.showCreditDialog(this, "立即使用", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                            startActivity(intent);
+                            dialog.dismiss();
+                        }
+                    });
                 } else {
                     mInstance.dismiss();
                     mInstance = null;
