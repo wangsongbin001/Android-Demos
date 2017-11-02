@@ -3,12 +3,16 @@ package com.wang.mtoolsdemo.common.util;
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
+
+import java.util.UUID;
 
 /**
  * Created by dell on 2017/10/18.
@@ -70,6 +74,7 @@ public class AppUtil {
 
     /**
      * 获取当前进程的名称
+     *
      * @param context
      * @return
      */
@@ -77,13 +82,63 @@ public class AppUtil {
         int pid = android.os.Process.myPid();
         String processName = null;
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningAppProcessInfo appProcess : am.getRunningAppProcesses()){
-            if(appProcess.pid == pid){
+        for (ActivityManager.RunningAppProcessInfo appProcess : am.getRunningAppProcesses()) {
+            if (appProcess.pid == pid) {
                 processName = appProcess.processName;
                 break;
             }
         }
         return processName;
+    }
+
+    /**
+     * @param context
+     * @return 获取设备的唯一ID或者应用的唯一ID
+     */
+    private static final String FILE_NAME = "DEVICE_ID.xml";
+    private static final String DEVICE_KEY = "device_id";
+    private static UUID uuid = null;
+    public static String getDeviceUUID(Context context) throws Exception {
+        if (context == null) {
+            throw new Exception("conext is null");
+        }
+        if (uuid == null) {
+            synchronized (FILE_NAME) {
+                if (uuid == null) {
+                    SharedPreferences sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+                    String id = sp.getString(DEVICE_KEY, null);
+                    if (id != null) {
+                        uuid = UUID.fromString(id);
+                    } else {
+                        //先找Android ID
+                        String androidId = Settings.Secure.getString(
+                                context.getContentResolver(), Settings.Secure.ANDROID_ID);
+                        Log.i("wangsongbin", "androidID:" + androidId);
+                        if (!TextUtils.isEmpty(androidId) && !"9774d56d682e549c".equals(androidId)) {
+                            uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf-8"));
+                        } else {
+                            //尝试获取deviceId
+                            try {
+                                TelephonyManager tm = (TelephonyManager)
+                                        context.getSystemService(Context.TELEPHONY_SERVICE);
+                                String deviceid = tm.getDeviceId();
+                                Log.i("wangsongbin", "deviceId:" + deviceid);
+                                if(!TextUtils.isEmpty(deviceid) && !"000000000000000".equals(deviceid)){
+                                    uuid = UUID.nameUUIDFromBytes(deviceid.getBytes("utf-8"));
+                                }
+                            } catch (Exception e) {
+                                 Log.i("wangsongbin", "exception:" + e.getMessage());
+                            }finally {
+                                if(uuid == null){
+                                    uuid = UUID.randomUUID();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return uuid.toString();
     }
 
     /**
@@ -130,7 +185,9 @@ public class AppUtil {
          */
 
         String androidId;//设备第一次启动，64byte字节，16进制存储
-        androidId = Settings.Secure.ANDROID_ID;
+//        androidId = Settings.Secure.ANDROID_ID;
+        androidId = Settings.Secure.getString(
+                context.getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.i("wangsongbin", "androidId:" + androidId);
         /**
          * 1，重装系统会重置
@@ -144,7 +201,6 @@ public class AppUtil {
          * 每次安装应用时，生成唯一ID
          * bf4768a9-5293-45f7-b1f3-26e63fac58e6
          */
-
         return null;
     }
 }

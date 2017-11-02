@@ -2,7 +2,6 @@ package com.wang.mtoolsdemo.work;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.wang.mtoolsdemo.App;
 import com.wang.mtoolsdemo.R;
@@ -24,7 +23,7 @@ public class SecondActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_2);
         banner = (Banner) findViewById(R.id.banner);
         List<String> urls = new ArrayList<>();
         urls.add("http://ww4.sinaimg.cn/large/006uZZy8jw1faic1xjab4j30ci08cjrv.jpg");

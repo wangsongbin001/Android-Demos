@@ -146,7 +146,7 @@ public class DialogUtil {
         if(!TextUtils.isEmpty(positiveTxt)){
             btn_use.setText(positiveTxt);
         }else {
-            btn_use.setText("Á¢¼´Ê¹ÓÃ");
+            btn_use.setText("ç«‹å³ä½¿ç”¨");
         }
         View.OnClickListener onSure = new View.OnClickListener() {
             @Override

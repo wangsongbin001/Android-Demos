@@ -83,9 +83,10 @@ public class MainActivity extends AppCompatActivity {
         SPUtil.put(getApplicationContext(), "weight", 65.5);
 
         Integer integer;
-        try{
-        AppUtil.getDeviceId(this);
-        }catch (Exception e){
+        try {
+            AppUtil.getDeviceId(this);
+            Log.i("wangsongbin", AppUtil.getDeviceUUID(this));
+        } catch (Exception e) {
             Log.i("wangsongbin", "msg:" + e.getMessage());
         }
     }

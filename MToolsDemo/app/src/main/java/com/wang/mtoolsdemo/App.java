@@ -38,7 +38,7 @@ public class App extends Application{
         LogUtil.i("wangsongbin", mUrls.toString());
         LogUtil.i("wangsongbin", mUrls.toString());
         if(getPackageName().equals(AppUtil.getCurrentProcessName(this))){
-            //Ö÷½ø³Ì
+            //ä¸»è¿›ç¨‹
         }
     }
 }
