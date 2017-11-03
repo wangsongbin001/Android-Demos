@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wang.mtoolsdemo.common.view.PullRefreshListView;
+import com.wang.mtoolsdemo.common.xlistview.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,21 +26,23 @@ import butterknife.ButterKnife;
 
 public class ThirdActivity extends Activity {
 
-    @Bind(R.id.lv)
-    ListView lv;
-    @Bind(R.id.pl)
-    PullRefreshListView pl;
+//    @Bind(R.id.lv)
+//    ListView lv;
+//    @Bind(R.id.pl)
+//    PullRefreshListView pl;
+    XListView lv;
 
     private List<String> data;
     private MyAdapter myAdapter;
     Handler mHandler;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_3);
         ButterKnife.bind(this);
 
+        lv = findViewById(R.id.lv);
         mHandler = new Handler();
         data = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -48,7 +51,9 @@ public class ThirdActivity extends Activity {
 
         myAdapter = new MyAdapter();
         lv.setAdapter(myAdapter);
-        pl.setmOnPullRefreshListener(new PullRefreshListView.OnPullRefreshListener() {
+        lv.setPullLoadEnable(true);
+        lv.setPullRefreshEnable(true);
+        lv.setXListViewListener(new XListView.IXListViewListener() {
             @Override
             public void onRefresh() {
                 mHandler.postDelayed(new Runnable() {
@@ -59,15 +64,13 @@ public class ThirdActivity extends Activity {
                             data.add("i = " + i);
                         }
                         myAdapter.notifyDataSetChanged();
-                        pl.setRefreshing(false);
+                        lv.stopRefresh(true);
                     }
                 }, 3000);
-
             }
 
             @Override
-            public void loadMore() {
-
+            public void onLoadMore() {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -75,7 +78,7 @@ public class ThirdActivity extends Activity {
                             data.add("i = " + i);
                         }
                         myAdapter.notifyDataSetChanged();
-                        pl.setLoading(false);
+                        lv.stopLoadMore();
                     }
                 }, 3000);
             }
