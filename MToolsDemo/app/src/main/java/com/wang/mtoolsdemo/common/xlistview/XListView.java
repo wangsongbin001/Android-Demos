@@ -26,7 +26,10 @@ import android.widget.TextView;
 
 import com.wang.mtoolsdemo.R;
 
-
+/**
+ * https://github.com/limxing/XListView
+ * 在此基础上，略微的调整
+ */
 public class XListView extends ListView implements OnScrollListener {
 
     private float mLastY = -1; // save event y
@@ -49,7 +52,7 @@ public class XListView extends ListView implements OnScrollListener {
     // -- footer view
     private XListViewFooter mFooterView;
     private boolean mEnablePullLoad = false;
-    private boolean mPullLoading;
+    private boolean mPullLoading = false;
     private boolean mIsFooterReady = false;
     private boolean mUsertSetEnablePullLoad = false;//用户对上拉加载的设置
 
@@ -66,7 +69,7 @@ public class XListView extends ListView implements OnScrollListener {
     // at bottom, trigger
     // load more.
     private final static float OFFSET_RADIO = 1.8f; // support iOS like pull
-    private boolean mPullLoad;//修复上拉不能恢复的bug,废除mPullloading
+//    private boolean mPullLoad;//修复上拉不能恢复的bug,废除mPullloading
     // feature.
     private boolean mReleaseCanLoadMore = false;
 
@@ -210,7 +213,7 @@ public class XListView extends ListView implements OnScrollListener {
      */
     public void stopLoadMore() {
         if (mPullLoading) {
-            mPullLoad = false;
+//            mPullLoad = false;
             mPullLoading = false;
             mReleaseCanLoadMore = false;
             mFooterView.setState(XListViewFooter.STATE_NORMAL);
@@ -225,7 +228,7 @@ public class XListView extends ListView implements OnScrollListener {
      */
     public void stopLoadMore(String msg) {
         if (mPullLoading) {
-            mPullLoad = false;
+//            mPullLoad = false;
             mPullLoading = false;
             mReleaseCanLoadMore = false;
             mFooterView.setState(XListViewFooter.STATE_NORMAL);
@@ -301,8 +304,8 @@ public class XListView extends ListView implements OnScrollListener {
                 mReleaseCanLoadMore = true;
             } else {
                 mFooterView.setState(XListViewFooter.STATE_NORMAL);
-                mPullLoading = false;
-                mPullLoad = false;
+//                mPullLoading = false;
+//                mPullLoad = false;
                 mReleaseCanLoadMore = false;
             }
         }
@@ -346,7 +349,7 @@ public class XListView extends ListView implements OnScrollListener {
             case MotionEvent.ACTION_MOVE:
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
-                if (!mPullLoading && !mReleaseCanLoadMore && getFirstVisiblePosition() == 0
+                if (!mReleaseCanLoadMore && getFirstVisiblePosition() == 0
                         && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                     // the first item is showing, header has shown or pull down.
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
@@ -373,12 +376,12 @@ public class XListView extends ListView implements OnScrollListener {
                     }
 
                 }
-                if (mPullLoading && getLastVisiblePosition() == mTotalItemCount - 1) {
+                if (mReleaseCanLoadMore && getLastVisiblePosition() == mTotalItemCount - 1) {
                     // invoke load more.
                     if (mEnablePullLoad
                             && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {
                         mFooterView.setState(XListViewFooter.STATE_LOADING);
-                        mPullLoad = true;
+//                        mPullLoad = true;
                         mPullLoading = true;
                         startLoadMore();
                     }

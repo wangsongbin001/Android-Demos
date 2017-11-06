@@ -45,7 +45,7 @@ public class ThirdActivity extends Activity {
         lv = findViewById(R.id.lv);
         mHandler = new Handler();
         data = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             data.add("i = " + i);
         }
 

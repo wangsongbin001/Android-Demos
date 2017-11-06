@@ -1,21 +1,21 @@
 <resources>
     <string name="app_name">MToolsDemo</string>
 
-    <string name="coupon_improve_tips">���ųɹ�</string>
+    <string name="coupon_improve_tips">借款发放成功</string>
 
     <!-- xListView-->
-    <string name="xlistview_header_hint_normal">����ˢ��</string>
-    <string name="xlistview_header_hint_ready">�ɿ�ˢ������</string>
-    <string name="xlistview_header_hint_loading">���ڼ���...</string>
-    <string name="xlistview_header_last_time">�ϴθ���ʱ�䣺</string>
-    <string name="xlistview_footer_hint_normal">�鿴����</string>
-    <string name="xlistview_footer_hint_ready">�ɿ��������</string>
-    <string name="xlistview_header_hint_success">ˢ�³ɹ�</string>
-    <string name="xlistview_header_hint_failt">ˢ��ʧ��</string>
-    <string name="not_updated_yet">��δ���¹�</string>
-    <string name="updated_at">�ϴθ�����%1$sǰ</string>
-    <string name="updated_just_now">�ոո���</string>
-    <string name="time_error">ʱ��������</string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="xlistview_header_hint_success">刷新成功</string>
+    <string name="xlistview_header_hint_failt">刷新失败</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_at">上次更新于%1$s前</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
 
 
 </resources>
