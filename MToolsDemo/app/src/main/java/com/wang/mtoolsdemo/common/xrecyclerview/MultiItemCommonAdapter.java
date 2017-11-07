@@ -21,11 +21,11 @@ public abstract class MultiItemCommonAdapter<T> extends CommonAdapter<T> {
         int getItemViewType(int position, T t);
     }
 
-    private MultiItemTypeSupport mMultiItemTypeSupport;
+    protected MultiItemTypeSupport mMultiItemTypeSupport;
 
     public MultiItemCommonAdapter(Context mContext, List mData,
                                   MultiItemTypeSupport multiItemTypeSupport) {
-        super(mContext, 0, mData);
+        super(mContext, -1, mData);
         this.mMultiItemTypeSupport = multiItemTypeSupport;
     }
 

@@ -34,6 +34,9 @@
         </activity>
 
         <activity android:name=".ThirdActivity">
+        </activity>
+
+        <activity android:name=".FourActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

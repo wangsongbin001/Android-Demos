@@ -23,7 +23,6 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
 
         void onItemLongClick(View item, int position);
     }
-
     OnItemClickListener mOnItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
