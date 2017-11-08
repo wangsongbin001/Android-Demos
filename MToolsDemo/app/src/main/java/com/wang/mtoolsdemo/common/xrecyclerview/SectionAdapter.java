@@ -25,11 +25,11 @@ public abstract class SectionAdapter<T> extends MultiItemCommonAdapter<T> {
     private SectionSupport mSectionSupport;
 
     public interface SectionSupport<T> {
-        //header²¼¾Ö
+        //headerå¸ƒå±€
         public int sectionHeaderLayoutId();
         //header textID
         public int sectionTitleTextViewId();
-        //¶ÔÓ¦Ê××ÖÄ¸
+        //å¯¹åº”é¦–å­—æ¯
         public String getTitle(T t);
     }
 
@@ -69,7 +69,7 @@ public abstract class SectionAdapter<T> extends MultiItemCommonAdapter<T> {
 
     @Override
     public int getItemViewType(int position) {
-        //Ó¦Îªdata.size ÓĞ¿ÉÄÜĞ¡ÓÚposition
+        //åº”ä¸ºdata.size æœ‰å¯èƒ½å°äºposition
         return mMultiItemTypeSupport.getItemViewType(position, null);
     }
 
@@ -95,7 +95,7 @@ public abstract class SectionAdapter<T> extends MultiItemCommonAdapter<T> {
     }
 
     /**
-     * ·µ»ØmDataµÄÏÂ±êindex£¬¶ÔÓ¦µÄÊı¾İµÄÊ××ÖÄ¸£¬ÊÇpositionĞèÒªµÄ¡£
+     * è¿”å›mDataçš„ä¸‹æ ‡indexï¼Œå¯¹åº”çš„æ•°æ®çš„é¦–å­—æ¯ï¼Œæ˜¯positionéœ€è¦çš„ã€‚
      * @param position
      * @return
      */

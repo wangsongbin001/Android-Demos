@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.wang.mtoolsdemo.common.util.ChineseCharToEnUtil;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,5 +24,15 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.wang.mtoolsdemo", appContext.getPackageName());
+    }
+
+    @Test
+    public static void testChineseCharToEnUtil(){
+        String actonName = ChineseCharToEnUtil.getAllFirstLetter("ÕÅÈý");
+        System.out.println("" + actonName);
+    }
+
+    public static void main(String[] args){
+        testChineseCharToEnUtil();
     }
 }

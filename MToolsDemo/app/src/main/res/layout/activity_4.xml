@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wang.mtoolsdemo.common.view.swipetoload.SwipeToLoadLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeToLoadLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.wang.mtoolsdemo.common.view.swipetoload.google.GoogleCircleHookRefreshHeaderView
+        android:id="@id/swipe_refresh_header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent">
+
+        <com.wang.mtoolsdemo.common.view.swipetoload.google.GoogleCircleProgressView
+            android:id="@id/googleProgress"
+            app:gcp_show_arrow="true"
+            app:gcp_progress_stoke_width="2dp"
+            app:gcp_arrow_height="6dp"
+            app:gcp_arrow_width="8dp"
+            android:layout_width="@dimen/refresh_drawable_size_google"
+            android:layout_height="@dimen/refresh_drawable_size_google"
+            android:layout_gravity="center" />
+
+    </com.wang.mtoolsdemo.common.view.swipetoload.google.GoogleCircleHookRefreshHeaderView>
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@id/swipe_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    
+    <com.wang.mtoolsdemo.common.view.swipetoload.google.GoogleCircleHookLoadMoreFooterView
+        android:id="@id/swipe_load_more_footer"
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
 
-</LinearLayout>
+        <com.wang.mtoolsdemo.common.view.swipetoload.google.GoogleCircleProgressView
+            android:id="@+id/googleProgress"
+            app:gcp_show_arrow="true"
+            app:gcp_progress_stoke_width="2dp"
+            app:gcp_arrow_height="6dp"
+            app:gcp_arrow_width="8dp"
+            android:layout_width="@dimen/refresh_drawable_size_google"
+            android:layout_height="@dimen/refresh_drawable_size_google"
+            android:layout_gravity="center" />
+    </com.wang.mtoolsdemo.common.view.swipetoload.google.GoogleCircleHookLoadMoreFooterView>
+
+</com.wang.mtoolsdemo.common.view.swipetoload.SwipeToLoadLayout>
