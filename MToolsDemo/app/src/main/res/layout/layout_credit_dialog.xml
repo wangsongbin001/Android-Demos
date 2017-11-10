@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
         <FrameLayout
             android:id="@+id/fl_center"
             android:layout_width="268dp"
-            android:layout_height="340dp"
-            android:layout_centerInParent="true">
+            android:layout_height="340dp">
 
                 <ImageView
                     android:layout_width="268dp"
                     android:layout_height="340dp"
-                    android:src="@mipmap/img_hb"
+                    android:src="@mipmap/img_coupon_improve_bg"
                     android:scaleType="fitXY"/>
 
                 <LinearLayout
@@ -37,7 +36,7 @@
                         android:textSize="30sp"
                         android:gravity="center"
                         android:textColor="#f15657"
-                        android:text="¥ 100"/>
+                        android:text="¥100"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,11 +69,11 @@
 
         <ImageView
             android:id="@+id/iv_cancel"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="20dp"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/fl_center"
-            android:src="@mipmap/img_hb_close"/>
+            android:src="@mipmap/icon_coupon_improve_close"/>
 
 </RelativeLayout>

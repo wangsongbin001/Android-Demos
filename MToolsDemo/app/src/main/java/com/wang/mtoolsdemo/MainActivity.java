@@ -84,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
         Integer integer;
         try {
-            AppUtil.getDeviceId(this);
-            Log.i("wangsongbin", AppUtil.getDeviceUUID(this));
+//            AppUtil.getDeviceId(this);
+//            Log.i("wangsongbin", AppUtil.getDeviceUUID(this));
         } catch (Exception e) {
-            Log.i("wangsongbin", "msg:" + e.getMessage());
+//            Log.i("wangsongbin", "msg:" + e.getMessage());
         }
     }
 

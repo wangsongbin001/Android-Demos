@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
@@ -12,7 +13,15 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.meituan.android.walle.ChannelInfo;
+import com.meituan.android.walle.WalleChannelReader;
+
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Map;
 import java.util.UUID;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  * Created by dell on 2017/10/18.
@@ -98,6 +107,7 @@ public class AppUtil {
     private static final String FILE_NAME = "DEVICE_ID.xml";
     private static final String DEVICE_KEY = "device_id";
     private static UUID uuid = null;
+
     public static String getDeviceUUID(Context context) throws Exception {
         if (context == null) {
             throw new Exception("conext is null");
@@ -123,13 +133,13 @@ public class AppUtil {
                                         context.getSystemService(Context.TELEPHONY_SERVICE);
                                 String deviceid = tm.getDeviceId();
                                 Log.i("wangsongbin", "deviceId:" + deviceid);
-                                if(!TextUtils.isEmpty(deviceid) && !"000000000000000".equals(deviceid)){
+                                if (!TextUtils.isEmpty(deviceid) && !"000000000000000".equals(deviceid)) {
                                     uuid = UUID.nameUUIDFromBytes(deviceid.getBytes("utf-8"));
                                 }
                             } catch (Exception e) {
-                                 Log.i("wangsongbin", "exception:" + e.getMessage());
-                            }finally {
-                                if(uuid == null){
+                                Log.i("wangsongbin", "exception:" + e.getMessage());
+                            } finally {
+                                if (uuid == null) {
                                     uuid = UUID.randomUUID();
                                 }
                             }
@@ -139,6 +149,72 @@ public class AppUtil {
             }
         }
         return uuid.toString();
+    }
+
+    /**
+     * http://www.jianshu.com/p/96566bd8b119
+     * http://www.cnblogs.com/ct2011/p/4152323.html
+     * 渠道号（通过美团打v1签名的渠道的包）
+     *
+     * @return
+     */
+    public static String getChannelV1(Context context) {
+        ApplicationInfo appinfo = context.getApplicationInfo();
+        String sourceDir = appinfo.sourceDir;
+        //注意这里：默认放在meta-inf/里， 所以需要再拼接一下
+        String key = "META-INF/" + "cztchannel";
+        String ret = "";
+        ZipFile zipfile = null;
+        try {
+            zipfile = new ZipFile(sourceDir);
+            Enumeration<?> entries = zipfile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = ((ZipEntry) entries.nextElement());
+                String entryName = entry.getName();
+                if (entryName.startsWith(key)) {
+                    ret = entryName;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i("getChannelV1", "msg:" + e.getMessage());
+        } finally {
+            if (zipfile != null) {
+                try {
+                    zipfile.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        String[] split = ret.split("_");
+        if (split != null && split.length >= 2) {
+            return ret.substring(split[0].length() + 1);
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * 通过美团，针对v2签名的打包方式,
+     * Walle 打渠道包方式，向下兼容的。
+     * @param context
+     * @return
+     */
+    public static String getChannelV2(Context context) {
+        String channel = "";
+        ChannelInfo channelInfo = WalleChannelReader
+                .getChannelInfo(context.getApplicationContext());
+        if (channelInfo != null) {
+            channel = channelInfo.getChannel();
+//            Log.i("wangsongbin", "channel:" + channel);
+//            Map<String, String> extraInfo = channelInfo.getExtraInfo();
+//            Log.i("wangsongbin", "extraInfo:" + extraInfo.toString());
+        }
+        // 或者也可以直接根据key获取
+//        String value = WalleChannelReader.get(context, "buildtime");
+        return channel;
     }
 
     /**

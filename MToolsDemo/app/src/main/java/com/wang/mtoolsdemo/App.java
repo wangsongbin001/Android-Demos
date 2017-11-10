@@ -2,6 +2,7 @@ package com.wang.mtoolsdemo;
 
 import android.app.Application;
 import android.os.Process;
+import android.util.Log;
 
 import com.wang.mtoolsdemo.common.util.AppUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
@@ -40,5 +41,7 @@ public class App extends Application{
         if(getPackageName().equals(AppUtil.getCurrentProcessName(this))){
             //主进程
         }
+        Log.i("wangsongbin", "channel1:" + AppUtil.getChannelV1(this));
+        Log.i("wangsongbin", "channel2:" + AppUtil.getChannelV2(this));
     }
 }
