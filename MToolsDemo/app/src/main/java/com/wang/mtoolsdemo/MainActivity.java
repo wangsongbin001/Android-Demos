@@ -149,14 +149,15 @@ public class MainActivity extends AppCompatActivity {
 //                //open
 //                DownloadManagerUtil.enableDownloadManager(this);
                 if (mInstance == null) {
-                    mInstance = DialogUtil.showCreditDialog(this, "立即使用", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                            startActivity(intent);
-                            dialog.dismiss();
-                        }
-                    });
+//                    mInstance = DialogUtil.showCreditDialog(this, "立即使用", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                            startActivity(intent);
+//                            dialog.dismiss();
+//                        }
+//                    });
+                    mInstance = DialogUtil.showCouponUsedDialog(MainActivity.this, "2000");
                 } else {
                     mInstance.dismiss();
                     mInstance = null;

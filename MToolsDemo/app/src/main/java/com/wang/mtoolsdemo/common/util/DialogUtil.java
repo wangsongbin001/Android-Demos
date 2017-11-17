@@ -171,4 +171,34 @@ public class DialogUtil {
         mInstance.setCancelable(true);
         return mInstance;
     }
+
+    public static android.support.v7.app.AlertDialog showCouponUsedDialog(Context context,
+                                                                          String finalQouta) {
+        final android.support.v7.app.AlertDialog mInstance
+                = new android.support.v7.app.AlertDialog.Builder(context, R.style.dialog_custom).create();
+        mInstance.show();
+        Window mWindow = mInstance.getWindow();
+        mWindow.setContentView(R.layout.layout_coupon_used_dialog);
+        TextView tv_title = (TextView) mWindow.findViewById(R.id.tv_title);
+        TextView tv_add_quota = (TextView) mWindow.findViewById(R.id.tv_add_quota);
+        TextView tv_final_quota = (TextView) mWindow.findViewById(R.id.tv_final_quota);
+        ImageView iv_cancel = mWindow.findViewById(R.id.iv_cancel);
+        //代初始化
+        tv_add_quota.setText(StringUtil.getString(context, "+" + 100));
+        tv_final_quota.setText("当前可用额度" + finalQouta);
+        iv_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mInstance.dismiss();
+            }
+        });
+
+        WindowManager.LayoutParams params = mWindow.getAttributes();
+        params.width = context.getResources().getDisplayMetrics().widthPixels
+                - DensityUtil.dp2px(context, 30 * 2);
+        mWindow.setAttributes(params);
+        mInstance.setCanceledOnTouchOutside(true);
+        mInstance.setCancelable(true);
+        return mInstance;
+    }
 }
