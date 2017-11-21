@@ -36,12 +36,12 @@ public class App extends Application{
         mUrls = new ArrayList<>(list1);
         mTitles = new ArrayList<>(list2);
 
-        LogUtil.i("wangsongbin", mUrls.toString());
-        LogUtil.i("wangsongbin", mUrls.toString());
+//        LogUtil.i("wangsongbin", mUrls.toString());
+//        LogUtil.i("wangsongbin", mUrls.toString());
         if(getPackageName().equals(AppUtil.getCurrentProcessName(this))){
             //主进程
         }
-        Log.i("wangsongbin", "channel1:" + AppUtil.getChannelV1(this));
-        Log.i("wangsongbin", "channel2:" + AppUtil.getChannelV2(this));
+//        Log.i("wangsongbin", "channel1:" + AppUtil.getChannelV1(this));
+//        Log.i("wangsongbin", "channel2:" + AppUtil.getChannelV2(this));
     }
 }

@@ -17,6 +17,7 @@ import com.meituan.android.walle.ChannelInfo;
 import com.meituan.android.walle.WalleChannelReader;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.UUID;
@@ -108,9 +109,9 @@ public class AppUtil {
     private static final String DEVICE_KEY = "device_id";
     private static UUID uuid = null;
 
-    public static String getDeviceUUID(Context context) throws Exception {
+    public static String getDeviceUUID(Context context){
         if (context == null) {
-            throw new Exception("conext is null");
+            return "";
         }
         if (uuid == null) {
             synchronized (FILE_NAME) {
@@ -125,7 +126,11 @@ public class AppUtil {
                                 context.getContentResolver(), Settings.Secure.ANDROID_ID);
                         Log.i("wangsongbin", "androidID:" + androidId);
                         if (!TextUtils.isEmpty(androidId) && !"9774d56d682e549c".equals(androidId)) {
-                            uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf-8"));
+                            try {
+                                uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf-8"));
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
                         } else {
                             //尝试获取deviceId
                             try {

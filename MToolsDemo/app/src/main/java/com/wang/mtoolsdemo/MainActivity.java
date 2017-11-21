@@ -2,7 +2,6 @@ package com.wang.mtoolsdemo;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -13,22 +12,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
-import com.wang.mtoolsdemo.common.util.AppUtil;
 import com.wang.mtoolsdemo.common.util.DialogUtil;
-import com.wang.mtoolsdemo.common.util.DownloadManagerUtil;
 import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.SPUtil;
-import com.wang.mtoolsdemo.work.SecondActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
+//import io.reactivex.disposables.CompositeDisposable;
+//import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
-    CompositeDisposable compositeDisposable;
+//    CompositeDisposable compositeDisposable;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        compositeDisposable = new CompositeDisposable();
+//        compositeDisposable = new CompositeDisposable();
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
@@ -180,31 +176,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (compositeDisposable != null) {
-            compositeDisposable.dispose();
-        }
+//        if (compositeDisposable != null) {
+//            compositeDisposable.dispose();
+//        }
     }
 
     private void checkPermissions() {
         if (!rxPermissions.isGranted(NeedPermissions[0])
                 || !rxPermissions.isGranted(NeedPermissions[1])) {
-            compositeDisposable.add(rxPermissions.request(NeedPermissions[0], NeedPermissions[1])
-                    .subscribe(new Consumer<Boolean>() {
-                        @Override
-                        public void accept(Boolean granted) throws Exception {
-                            Log.i("wangsongbin", "granted:" + granted);
-                            if (granted) {
-                                Log.i("wangsongbin", "");
-                            } else {
-
-                            }
-                        }
-                    }, new Consumer<Throwable>() {
-                        @Override
-                        public void accept(Throwable throwable) throws Exception {
-
-                        }
-                    }));
+//            compositeDisposable.add(rxPermissions.request(NeedPermissions[0], NeedPermissions[1])
+//                    .subscribe(new Consumer<Boolean>() {
+//                        @Override
+//                        public void accept(Boolean granted) throws Exception {
+//                            Log.i("wangsongbin", "granted:" + granted);
+//                            if (granted) {
+//                                Log.i("wangsongbin", "");
+//                            } else {
+//
+//                            }
+//                        }
+//                    }, new Consumer<Throwable>() {
+//                        @Override
+//                        public void accept(Throwable throwable) throws Exception {
+//
+//                        }
+//                    }));
         }
     }
 
