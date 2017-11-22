@@ -7,20 +7,15 @@ import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.wang.mtoolsdemo.common.bean.ResponseBean;
-import com.wang.mtoolsdemo.common.bean.ResponseBean1;
-import com.wang.mtoolsdemo.common.rxjava1.IApiService1;
-
-import java.util.concurrent.TimeUnit;
+import com.wang.mtoolsdemo.common.bean.NewVersion;
+import com.wang.mtoolsdemo.common.bean.PlatformVersion;
+import com.wang.mtoolsdemo.common.excep.ApiException;
+import com.wang.mtoolsdemo.common.rxjava1.RetrofitUtil1;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.functions.Func1;
 import rx.subscriptions.CompositeSubscription;
 
 
@@ -46,32 +41,62 @@ public class FiveActivity extends AppCompatActivity {
         mActivity = this;
         compositeSubscription = new CompositeSubscription();
 
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .build();
+        Log.i("wangsongbin", "" + Thread.currentThread());
+        RetrofitUtil1.getService().getNewVersion3()
+                .map(new Func1<NewVersion, PlatformVersion>() {
+                    @Override
+                    public PlatformVersion call(NewVersion newVersion) {
+                        Log.i("wangsongbin", "" + Thread.currentThread());
+                        return newVersion.getAndroid();
+                    }
+                })
+                .subscribe(new Subscriber<PlatformVersion>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.i("wangsongbin", "onCompleted");
+                    }
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.138.60.131:10000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i("wangsongbin", "onError" + e.getMessage());
+                        if (e instanceof ApiException) {
+                        }
+                    }
 
-        IApiService1 apiService1 = retrofit.create(IApiService1.class);
-        Call<ResponseBean1> call = apiService1.getNewVersion1();
-        call.enqueue(new Callback<ResponseBean1>() {
-            @Override
-            public void onResponse(Call<ResponseBean1> call, Response<ResponseBean1> response) {
-                Log.i("wangsongbin", "" + Thread.currentThread());
-                Log.i("wangsongbin", response.toString());
-                Log.i("wangsongbin", response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBean1> call, Throwable t) {
-
-            }
-        });
+                    @Override
+                    public void onNext(PlatformVersion responseBean) {
+                        Log.i("wangsongbin", "" + Thread.currentThread());
+                        Log.i("wangsongbin", responseBean.toString());
+                    }
+                });
+//        Call<ResponseBean> call = apiService1.getNewVersion2();
+//        call.enqueue(new Callback<ResponseBean>() {
+//            @Override
+//            public void onResponse(Call<ResponseBean> call, Response<ResponseBean> response) {
+//                Log.i("wangsongbin", "" + Thread.currentThread());
+//                Log.i("wangsongbin", response.toString());
+//                Log.i("wangsongbin", response.body().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBean> call, Throwable t) {
+//
+//            }
+//        });
+//        Call<ResponseBean1> call = apiService1.getNewVersion1();
+//        call.enqueue(new Callback<ResponseBean1>() {
+//            @Override
+//            public void onResponse(Call<ResponseBean1> call, Response<ResponseBean1> response) {
+//                Log.i("wangsongbin", "" + Thread.currentThread());
+//                Log.i("wangsongbin", response.toString());
+//                Log.i("wangsongbin", response.body().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBean1> call, Throwable t) {
+//
+//            }
+//        });
 //        Request request = new Request.Builder()
 //                .url("http://10.138.60.131:10000/app/version/newVersion")
 //                .build();
@@ -89,7 +114,7 @@ public class FiveActivity extends AppCompatActivity {
 //            }
 //        });
 
-        if(true){
+        if (true) {
             return;
         }
 //        Gson gson = new GsonBuilder()
@@ -126,7 +151,7 @@ public class FiveActivity extends AppCompatActivity {
 //                .replace(0, null)
 //                .addToBackStack("")
 //                .commit();
-        //rxjava??
+        //rxjava测试
         mActivity = mActivity;
 //        compositeSubscription.add(Observable.create(new Observable.OnSubscribe<String>() {
 //            @Override
@@ -136,7 +161,7 @@ public class FiveActivity extends AppCompatActivity {
 //                subscriber.onNext("http://h.hiphotos.baidu.com/image/crop%3D0%2C0%2C510%2C446/sign=3690ea2a33dbb6fd3114bf6634148728/80cb39dbb6fd5266b75c62c5a118972bd50736ef.jpg");
 //                subscriber.onCompleted();
 //            }})
-//         .subscribeOn(Schedulers.io())//subscribe???????,?call???????
+//         .subscribeOn(Schedulers.io())//subscribe执行所在的线程，即call方法所在的线程
 //         .map(new Func1<String, Drawable>() {
 //                    @Override
 //                    public Drawable call(String s) {

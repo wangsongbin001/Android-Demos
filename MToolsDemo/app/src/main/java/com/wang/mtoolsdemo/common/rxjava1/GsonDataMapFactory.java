@@ -3,7 +3,10 @@ package com.wang.mtoolsdemo.common.rxjava1;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.wang.mtoolsdemo.common.bean.ResponseBean;
 import com.wang.mtoolsdemo.common.bean.ResultBean;
+import com.wang.mtoolsdemo.common.excep.ApiException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,15 +40,14 @@ public class GsonDataMapFactory extends Converter.Factory{
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
         Class<?> rawType = getRawType(type);
         if(rawType != ResultBean.class){
-
-            return new DataMapGsonResponseBodyConverter<>(null, false);//解析出data
+            TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
+            return new DataMapGsonResponseBodyConverter<>(adapter, rawType != ResponseBean.class);//解析出data
         }
         return super.responseBodyConverter(type, annotations, retrofit);
     }
 
     private static class DataMapGsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
         private final TypeAdapter<T> adapter;
-
         private final boolean withData;
 
         DataMapGsonResponseBodyConverter(TypeAdapter<T> adapter, boolean withData) {
@@ -59,23 +61,22 @@ public class GsonDataMapFactory extends Converter.Factory{
                 String json = value.string();
                 JSONObject jsonObject = new JSONObject(json);
                 String status = jsonObject.getString("status");
-//                if (EnumResCode.REQUEST_SUCCESS.equals(status)) {
-//                    if (withData) {
-//                        json = jsonObject.get("data").toString();
-//                        if ("null".equalsIgnoreCase(json)) {
-////                            throw new DataIsNullException();
-//                        }
-//                    }
-//                    return adapter.fromJson(json);
-//                } else {
-////                    throw new ApiException(status, jsonObject.getString("message"));
-//                }
+                if ("000".equals(status)) {//请求成功
+                    if (withData) {
+                        json = jsonObject.get("data").toString();
+                        if ("null".equalsIgnoreCase(json)) {
+                            throw new ApiException("001", "data is null");
+                        }
+                    }
+                    return adapter.fromJson(json);
+                } else {
+                    throw new ApiException(status, jsonObject.getString("message"));
+                }
             } catch (JSONException e) {
                 throw new IOException(e);
             } finally {
                 value.close();
             }
-            return null;
         }
     }
 

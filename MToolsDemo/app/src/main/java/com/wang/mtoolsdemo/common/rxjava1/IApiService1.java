@@ -1,5 +1,6 @@
 package com.wang.mtoolsdemo.common.rxjava1;
 
+import com.wang.mtoolsdemo.common.bean.NewVersion;
 import com.wang.mtoolsdemo.common.bean.ResponseBean;
 import com.wang.mtoolsdemo.common.bean.ResponseBean1;
 
@@ -14,9 +15,17 @@ import rx.Observable;
  */
 
 public interface IApiService1 {
+
     @POST("app/version/newVersion")
     Observable<ResponseBean> getNewVersion();
 
     @GET("app/version/newVersion")
     Call<ResponseBean1> getNewVersion1();
+
+    @GET("app/version/newVersion")
+    Call<ResponseBean> getNewVersion2();
+
+    @POST("app/version/newVersion")
+    Observable<NewVersion> getNewVersion3();
+
 }

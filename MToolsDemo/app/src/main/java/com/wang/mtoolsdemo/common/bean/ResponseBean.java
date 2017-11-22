@@ -33,4 +33,12 @@ public class ResponseBean implements Serializable{
     public void setRespMsg(String respMsg) {
         this.respMsg = respMsg;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseBean{" +
+                "respCode='" + respCode + '\'' +
+                ", respMsg='" + respMsg + '\'' +
+                '}';
+    }
 }
