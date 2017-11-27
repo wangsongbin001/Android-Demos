@@ -35,7 +35,7 @@ public class PermissionActivity extends AppCompatActivity {
     public static final String tag = "wangsongbin";
 
     //授权成功回调
-    protected interface AllPermissionGrantedCallBack {
+    public interface AllPermissionGrantedCallBack {
         //所有权限被授予
         void allPermissionGranted();
     }
@@ -43,7 +43,7 @@ public class PermissionActivity extends AppCompatActivity {
     AllPermissionGrantedCallBack allPermissionGrantedCallBack;
 
     //授权失败回调
-    protected interface PermissionsDeniedCallback {
+    public interface PermissionsDeniedCallback {
         //一些权限被拒
         void somePermissionsDenied(List<String> deniedPermissions);
 //        //一些权限被授权
@@ -73,7 +73,7 @@ public class PermissionActivity extends AppCompatActivity {
         Log.i("wangsongbin", "onPause");
     }
 
-    protected void checkNeedPermissions(String[] permissions, AllPermissionGrantedCallBack allPermissionGrantedCallBack
+    public void checkNeedPermissions(String[] permissions, AllPermissionGrantedCallBack allPermissionGrantedCallBack
               ,PermissionsDeniedCallback permissionsDeniedCallback) {
         if (permissions == null) {
             Log.i(tag, "exception permissions is null");
@@ -152,7 +152,7 @@ public class PermissionActivity extends AppCompatActivity {
         }
     }
 
-    private void showMissPermissionDialog() {
+    public void showMissPermissionDialog() {
         if (aDialog == null) {
             aDialog = new AlertDialog.Builder(PermissionActivity.this)
                     .setTitle("帮助")

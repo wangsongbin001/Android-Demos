@@ -9,11 +9,19 @@ import android.widget.ImageView;
 
 import com.wang.mtoolsdemo.common.bean.NewVersion;
 import com.wang.mtoolsdemo.common.bean.PlatformVersion;
+import com.wang.mtoolsdemo.common.bean.ResponseBean;
 import com.wang.mtoolsdemo.common.excep.ApiException;
 import com.wang.mtoolsdemo.common.rxjava1.RetrofitUtil1;
 
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import rx.Subscriber;
 import rx.functions.Func1;
 import rx.subscriptions.CompositeSubscription;
@@ -41,34 +49,34 @@ public class FiveActivity extends AppCompatActivity {
         mActivity = this;
         compositeSubscription = new CompositeSubscription();
 
-        Log.i("wangsongbin", "" + Thread.currentThread());
-        RetrofitUtil1.getService().getNewVersion3()
-                .map(new Func1<NewVersion, PlatformVersion>() {
-                    @Override
-                    public PlatformVersion call(NewVersion newVersion) {
-                        Log.i("wangsongbin", "" + Thread.currentThread());
-                        return newVersion.getAndroid();
-                    }
-                })
-                .subscribe(new Subscriber<PlatformVersion>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.i("wangsongbin", "onCompleted");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.i("wangsongbin", "onError" + e.getMessage());
-                        if (e instanceof ApiException) {
-                        }
-                    }
-
-                    @Override
-                    public void onNext(PlatformVersion responseBean) {
-                        Log.i("wangsongbin", "" + Thread.currentThread());
-                        Log.i("wangsongbin", responseBean.toString());
-                    }
-                });
+//        Log.i("wangsongbin", "" + Thread.currentThread());
+//        RetrofitUtil1.getService().getNewVersion3()
+//                .map(new Func1<NewVersion, PlatformVersion>() {
+//                    @Override
+//                    public PlatformVersion call(NewVersion newVersion) {
+//                        Log.i("wangsongbin", "" + Thread.currentThread());
+//                        return newVersion.getAndroid();
+//                    }
+//                })
+//                .subscribe(new Subscriber<PlatformVersion>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.i("wangsongbin", "onCompleted");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.i("wangsongbin", "onError" + e.getMessage());
+//                        if (e instanceof ApiException) {
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onNext(PlatformVersion responseBean) {
+//                        Log.i("wangsongbin", "" + Thread.currentThread());
+//                        Log.i("wangsongbin", responseBean.toString());
+//                    }
+//                });
 //        Call<ResponseBean> call = apiService1.getNewVersion2();
 //        call.enqueue(new Callback<ResponseBean>() {
 //            @Override
@@ -97,22 +105,26 @@ public class FiveActivity extends AppCompatActivity {
 //
 //            }
 //        });
-//        Request request = new Request.Builder()
-//                .url("http://10.138.60.131:10000/app/version/newVersion")
-//                .build();
-//        Log.i("wangsongbin", "" + Thread.currentThread());
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                Log.i("wangsongbin", "" + Thread.currentThread());
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("http://10.138.60.131:10000/app/version/newVersion")
+                .build();
+//        Response response = client.newCall(request).execute();
+//        Log.i("wangsongbin", "" + response.body().string());
+        Log.i("wangsongbin", "" + Thread.currentThread());
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("wangsongbin", "" + Thread.currentThread());
+                Log.i("wangsongbin", response.body().string());
+                //bodyÂè™ËÉΩË¢´Ê∂àË¥π‰∏ÄÊ¨°ÔºåÂ§öÊ¨°Ê∂àË¥πÊäõÂºÇÂ∏∏
 //                Log.i("wangsongbin", response.body().string());
-//            }
-//        });
+            }
+        });
 
         if (true) {
             return;
@@ -151,7 +163,7 @@ public class FiveActivity extends AppCompatActivity {
 //                .replace(0, null)
 //                .addToBackStack("")
 //                .commit();
-        //rxjava≤‚ ‘
+        //rxjavaÊµãËØï
         mActivity = mActivity;
 //        compositeSubscription.add(Observable.create(new Observable.OnSubscribe<String>() {
 //            @Override
@@ -161,7 +173,7 @@ public class FiveActivity extends AppCompatActivity {
 //                subscriber.onNext("http://h.hiphotos.baidu.com/image/crop%3D0%2C0%2C510%2C446/sign=3690ea2a33dbb6fd3114bf6634148728/80cb39dbb6fd5266b75c62c5a118972bd50736ef.jpg");
 //                subscriber.onCompleted();
 //            }})
-//         .subscribeOn(Schedulers.io())//subscribe÷¥––À˘‘⁄µƒœﬂ≥Ã£¨º¥call∑Ω∑®À˘‘⁄µƒœﬂ≥Ã
+//         .subscribeOn(Schedulers.io())//subscribeÊâßË°åÊâÄÂú®ÁöÑÁ∫øÁ®ãÔºåÂç≥callÊñπÊ≥ïÊâÄÂú®ÁöÑÁ∫øÁ®ã
 //         .map(new Func1<String, Drawable>() {
 //                    @Override
 //                    public Drawable call(String s) {

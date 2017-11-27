@@ -1,12 +1,15 @@
 package com.wang.mtoolsdemo.common.util;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -109,7 +112,7 @@ public class AppUtil {
     private static final String DEVICE_KEY = "device_id";
     private static UUID uuid = null;
 
-    public static String getDeviceUUID(Context context){
+    public static String getDeviceUUID(Context context) {
         if (context == null) {
             return "";
         }
@@ -204,6 +207,7 @@ public class AppUtil {
     /**
      * 通过美团，针对v2签名的打包方式,
      * Walle 打渠道包方式，向下兼容的。
+     *
      * @param context
      * @return
      */
@@ -220,6 +224,20 @@ public class AppUtil {
         // 或者也可以直接根据key获取
 //        String value = WalleChannelReader.get(context, "buildtime");
         return channel;
+    }
+
+    /**
+     *
+     * @param mActivity
+     */
+    public static void jumpToSettingPermission(Activity mActivity) {
+        if(mActivity == null){
+            return;
+        }
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        String PACKAGE_URL_SCHEME = "package:";
+        intent.setData(Uri.parse(PACKAGE_URL_SCHEME + mActivity.getPackageName()));
+        mActivity.startActivityForResult(intent, 1001);
     }
 
     /**
