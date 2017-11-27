@@ -71,7 +71,7 @@ public class LaunchActivity extends PermissionActivity implements
         showMissPermissionDialog();
     }
 
-    public void showUpdateView(PlatformVersion platformVersion){
+    public void showUpdateView(final PlatformVersion platformVersion){
         //如果正在下载
         if(mLaunchHelper.isDownloading(platformVersion.getDownloadUrl())){
             return;
@@ -87,7 +87,7 @@ public class LaunchActivity extends PermissionActivity implements
                     dialog.dismiss();
                     return;
                 }
-//                mLaunchHelper.startDownload();
+                mLaunchHelper.startDownload(platformVersion);
 
             }
         }, "取消", new DialogInterface.OnClickListener() {

@@ -12,6 +12,8 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.webkit.MimeTypeMap;
 
+import com.wang.mtoolsdemo.common.util.SPUtil;
+
 import java.io.File;
 
 /**
@@ -23,7 +25,7 @@ public class DownloadService extends Service {
     DownloadManager mDownloadManager;
     OnCompleteReceiver mOnCompleteReceiver;
 
-    private static final String DownLoadPath = "/Wangsongbin/apk";
+    private static final String DownLoadPath = "/CSDNApp/apk";
 
     @Override
     public void onCreate() {
@@ -59,8 +61,13 @@ public class DownloadService extends Service {
     }
 
     public void download(String url, String fileName){
+        //注册监听
+//        getContentResolver().registerContentObserver();
+
         //正式开始下载
         long downloadId = mDownloadManager.enqueue(createRequest(url, fileName));
+        SPUtil.put(getApplicationContext(), "downloadid", downloadId);
+
     }
 
     /**
@@ -99,6 +106,9 @@ public class DownloadService extends Service {
         return null;
     }
 
+    /**
+     * 下载完成
+     */
     public class OnCompleteReceiver extends BroadcastReceiver {
 
         @Override
