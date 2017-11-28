@@ -6,13 +6,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 import android.webkit.MimeTypeMap;
 
+import com.wang.mtoolsdemo.common.AppConfig;
+import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.SPUtil;
+import com.wang.mtoolsdemo.common.util.ToastUtil;
+import com.wang.mtoolsdemo.common.util.VerifyUtil;
 
 import java.io.File;
 
@@ -24,8 +28,6 @@ public class DownloadService extends Service {
 
     DownloadManager mDownloadManager;
     OnCompleteReceiver mOnCompleteReceiver;
-
-    private static final String DownLoadPath = "/CSDNApp/apk";
 
     @Override
     public void onCreate() {
@@ -40,6 +42,7 @@ public class DownloadService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        LogUtil.i("wangsongbin", "onDestroy");
         //注销监听
         if (mOnCompleteReceiver != null) {
             unregisterReceiver(mOnCompleteReceiver);
@@ -54,20 +57,37 @@ public class DownloadService extends Service {
         if(intent != null){
             String url = intent.getStringExtra("url");
             String fileName = intent.getStringExtra("filename");
-            Environment.getExternalStoragePublicDirectory("" + DownLoadPath).mkdirs();
+            Environment.getExternalStoragePublicDirectory("" + AppConfig.FILE_PATH).mkdirs();
             download(url, fileName);
         }
         return super.onStartCommand(intent, flags, startId);
     }
 
     public void download(String url, String fileName){
+        LogUtil.i("wangsongbin", "开始下载");
         //注册监听
-//        getContentResolver().registerContentObserver();
+//        mDownloadChangeObserver = new DownloadChangeObserver(this, mainHandler);
+//        getContentResolver().registerContentObserver(Uri.parse("content://downloads/"), true, mDownloadChangeObserver);
+
+        //校验下载地址是否正确
+        if(!VerifyUtil.isUrl(url)){
+            ToastUtil.showLong(getApplicationContext(), "下载地址不正确");
+            return;
+        }
+
+        //校验下载地址是否正在下载
+        if(isDownloading(url)){
+            return;
+        }
 
         //正式开始下载
         long downloadId = mDownloadManager.enqueue(createRequest(url, fileName));
         SPUtil.put(getApplicationContext(), "downloadid", downloadId);
 
+        //发送广播注册观察者
+        Intent intent = new Intent(LaunchHelper.ACTION_START_DOWNLOAD);
+        intent.putExtra("downloadid", downloadId);
+        sendBroadcast(intent);
     }
 
     /**
@@ -93,14 +113,13 @@ public class DownloadService extends Service {
         request.addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
         request.setDescription("更新下载");
 
-        File fileDir = Environment.getExternalStoragePublicDirectory(DownLoadPath);
+        File fileDir = Environment.getExternalStoragePublicDirectory(AppConfig.FILE_PATH);
         if (fileDir.mkdirs() || fileDir.isDirectory()) {
-            request.setDestinationInExternalPublicDir(DownLoadPath, fileName);
+            request.setDestinationInExternalPublicDir(AppConfig.FILE_PATH, fileName);
         }
-        // request.setDestinationInExternalPublicDir(AppConfig.FILEPATH, fileName);
         return request;
     }
-    @Nullable
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -113,7 +132,26 @@ public class DownloadService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-
+            LogUtil.i("wangsongbin", "下载完成");
+//            ToastUtil.showLong(context.getApplicationContext(), "下载完成！");
+            //安装应用
+            long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1l);
+            long downloadId = (long) SPUtil.get(context, "downloadid", -1l);
+            if(id != downloadId){
+                return;
+            }
+            Cursor cursor = mDownloadManager.query(new DownloadManager.Query().setFilterById(id));
+            if(cursor.moveToFirst()){
+                int columIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                if(cursor.getInt(columIndex) == DownloadManager.STATUS_SUCCESSFUL){
+                    String localFileUri = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+                    SPUtil.put(context, "downloadid", -1l);
+                    //安装
+                    LaunchHelper.installApk(context, localFileUri.replaceFirst("file://", ""));
+                }
+            }
+            cursor.close();
+            stopSelf();
         }
     }
 
@@ -123,7 +161,33 @@ public class DownloadService extends Service {
     BroadcastReceiver onNotificationClick = new BroadcastReceiver() {
         @Override
         public void onReceive(Context ctxt, Intent intent) {
-
+            LogUtil.i("wangsongbin", "点击通知");
+            showDownloadManagerView();
         }
     };
+
+    /** 跳转到系统下载界面 */
+    private void showDownloadManagerView() {
+        Intent intent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    /** 判断传入的url是否正在下载 */
+    private boolean isDownloading(String url) {
+        Cursor c = mDownloadManager.query(new DownloadManager.Query().setFilterByStatus(DownloadManager.STATUS_RUNNING));
+        if (c != null && c.moveToFirst()) {
+            String tmpURI = c.getString(c.getColumnIndex(DownloadManager.COLUMN_URI));
+            if (tmpURI.equals(url)){
+                if(!c.isClosed()){
+                    c.close();
+                }
+                return true;
+            }
+        }
+        if(c != null && !c.isClosed()){
+            c.close();
+        }
+        return false;
+    }
 }

@@ -53,6 +53,9 @@
         </activity>
 
         <activity android:name=".SixActivity">
+        </activity>
+
+        <activity android:name=".common.download.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,8 +63,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".common.download.LaunchActivity">
-        </activity>
+        <service android:name=".common.download.DownloadService"></service>
     </application>
 
 </manifest>

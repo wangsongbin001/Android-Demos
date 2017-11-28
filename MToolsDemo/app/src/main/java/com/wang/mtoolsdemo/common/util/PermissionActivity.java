@@ -64,13 +64,13 @@ public class PermissionActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("wangsongbin", "onResume");
+//        LogUtil.i("wangsongbin", "onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("wangsongbin", "onPause");
+//        LogUtil.i("wangsongbin", "onPause");
     }
 
     public void checkNeedPermissions(String[] permissions, AllPermissionGrantedCallBack allPermissionGrantedCallBack
@@ -98,7 +98,7 @@ public class PermissionActivity extends AppCompatActivity {
 
     //权限齐全回调
     private void allPermissionGranted() {
-        Log.i(tag, "权限齐全");
+//        LogUtil.i(tag, "权限齐全");
         if (allPermissionGrantedCallBack != null) {
             allPermissionGrantedCallBack.allPermissionGranted();
         }
