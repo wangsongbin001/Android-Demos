@@ -1,11 +1,8 @@
 package com.wang.mtoolsdemo;
 
 import android.app.Application;
-import android.os.Process;
-import android.util.Log;
 
 import com.wang.mtoolsdemo.common.util.AppUtil;
-import com.wang.mtoolsdemo.common.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;

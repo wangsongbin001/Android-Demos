@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <!--
+        <external-path path="MToolsDemo/image/" name="image" />
+        <external-path path="MToolsDemo/file/" name="file" />
+        http://www.jianshu.com/p/6e1826e72604
+        -->
+        <external-path path="MToolsDemo/" name="file" />
+    </paths>
+</resources>

@@ -1,5 +1,6 @@
 package com.wang.mtoolsdemo;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
@@ -22,18 +23,21 @@ import android.widget.TextView;
 import com.wang.mtoolsdemo.common.bean.ProgressBean;
 import com.wang.mtoolsdemo.common.download.DownloadChangeObserver;
 import com.wang.mtoolsdemo.common.util.LogUtil;
+import com.wang.mtoolsdemo.common.util.PermissionActivity;
 import com.wang.mtoolsdemo.common.util.SPUtil;
 import com.wang.mtoolsdemo.common.util.ToastUtil;
+import com.wang.mtoolsdemo.common.view.MHorizontalProgressDialog;
 import com.wang.mtoolsdemo.common.view.NumberProgressBar;
 
 import java.io.File;
+import java.io.FileDescriptor;
 
 /**
  * Created by dell on 2017/11/24.
  * 检测更新App
  */
 
-public class SixActivity extends Activity{
+public class SixActivity extends PermissionActivity{
     String url = "http://m.creditflower.cn/apk/XinYongHua-V110-TEST.apk";
     String fileName = "XinYongHua-V110-TEST.apk";
 
@@ -66,11 +70,25 @@ public class SixActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_6);
 
-        btn_install = findViewById(R.id.btn_install);
+        checkNeedPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE}, null, null);
+
+        btn_install = (Button) findViewById(R.id.btn_install);
         btn_install.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                installApk(SixActivity.this, "");
+                MHorizontalProgressDialog mHorizontalProgressDialog
+                        = new MHorizontalProgressDialog(SixActivity.this);
+                mHorizontalProgressDialog.show();
+
+//                StringBuilder sb = new StringBuilder(Environment.getExternalStorageDirectory().getAbsolutePath());
+//                sb.append("/MToolsDemo/file")
+//                        .append(File.separator)
+//                        .append("app-debug.apk");
+//
+//                LogUtil.i("wangsongbin", "" + Build.VERSION.SDK_INT + "," + sb.toString());
+//                installApk(SixActivity.this, "" + sb.toString());
+//                finish();
             }
         });
 //        tv_progress = findViewById(R.id.tv_progress);
@@ -137,15 +155,17 @@ public class SixActivity extends Activity{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             uri = FileProvider.getUriForFile(context,
-                    "com.vcredit.j1000.files", file);
+                    "com.wang.mtoolsdemo.fileprovider", file);
         } else {
             uri = Uri.fromFile(file);
         }
         intent.setDataAndType(uri, "application/vnd.android.package-archive");
         try {
+            LogUtil.i("wangsongbin", "install");
             context.startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
+            LogUtil.i("wangsongbin", "" + e.getMessage());
             ToastUtil.showLong(context, "打开安装程序失败");
         }
     }

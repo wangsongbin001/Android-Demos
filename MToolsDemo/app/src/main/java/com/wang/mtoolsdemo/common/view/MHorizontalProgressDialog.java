@@ -3,13 +3,16 @@ package com.wang.mtoolsdemo.common.view;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.wang.mtoolsdemo.R;
+import com.wang.mtoolsdemo.common.util.DensityUtil;
 
 /**
  * Created by dell on 2017/11/28.
+ * http://www.jianshu.com/p/672e6486a72a
  */
 
 public class MHorizontalProgressDialog extends ProgressDialog{
@@ -38,7 +41,8 @@ public class MHorizontalProgressDialog extends ProgressDialog{
         progressBar = getWindow().findViewById(R.id.progress);
 
         WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.width = DensityUtil.dp2px(context.getApplicationContext(), 320);
+//        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         getWindow().setAttributes(lp);
     }

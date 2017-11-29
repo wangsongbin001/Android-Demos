@@ -114,7 +114,7 @@ public class LaunchActivity extends PermissionActivity implements
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //检查DownloadManager是否被禁用
-                if(!DownloadManagerResolver.resolve(mActivity)){
+                if (!DownloadManagerResolver.resolve(mActivity)) {
                     dialog.dismiss();
                     return;
                 }
@@ -137,9 +137,9 @@ public class LaunchActivity extends PermissionActivity implements
         if(mProgressDialog == null){
             mProgressDialog = new MHorizontalProgressDialog(mActivity);
         }
+        mProgressDialog.show();
         mProgressDialog.setTitle("正在下载：" + mLaunchHelper.getApkName(version.getVersionCode()));
         mProgressDialog.update(0, (long) version.getAppSize());
-        mProgressDialog.show();
     }
 
     public void go2MainActivity() {
@@ -156,7 +156,11 @@ public class LaunchActivity extends PermissionActivity implements
         tv_progress.setText( tempProgress + "%");
         progressBar.setProgress(tempProgress);
         if(mProgressDialog != null){
-            mProgressDialog.update(progress, total);
+            if(progress == total){
+                mProgressDialog.dismiss();
+            }else{
+                mProgressDialog.update(progress, total);
+            }
         }
     }
 

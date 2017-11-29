@@ -69,9 +69,6 @@ public class LaunchHelper {
         mLauncherActivity.registerReceiver(mDownloadIdBroadcastReceiver, new IntentFilter("" +
                             ACTION_START_DOWNLOAD));
     }
-    private void unRegister(){
-        mLauncherActivity.unregisterReceiver(mDownloadIdBroadcastReceiver);
-    }
 
     /**
      * 检查版本
@@ -200,7 +197,7 @@ public class LaunchHelper {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             uri = FileProvider.getUriForFile(context,
-                    "com.vcredit.j1000.files", file);
+                    "com.wang.mtoolsdemo.fileprovider", file);
         } else {
             uri = Uri.fromFile(file);
         }
@@ -243,8 +240,12 @@ public class LaunchHelper {
         if(mLauncherActivity == null){
             return;
         }
-        unRegister();
-        mLauncherActivity.getContentResolver().unregisterContentObserver(mDownloadChangeObserver);
+        if(mDownloadIdBroadcastReceiver != null){
+            mLauncherActivity.unregisterReceiver(mDownloadIdBroadcastReceiver);
+        }
+        if(mDownloadChangeObserver != null){
+            mLauncherActivity.getContentResolver().unregisterContentObserver(mDownloadChangeObserver);
+        }
     }
 
     public class DownloadIdBroadcastReceiver extends BroadcastReceiver{

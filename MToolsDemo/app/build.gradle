@@ -7,7 +7,7 @@ android {
         applicationId "com.wang.mtoolsdemo"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
+        versionCode 10
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -28,7 +28,7 @@ android {
             keyPassword 'wangso'
             storeFile file('C:/Users/dell/wang.jks')
             storePassword 'wangso'
-            v2SigningEnabled true
+//            v2SigningEnabled true
         }
     }
     buildTypes {
@@ -38,7 +38,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug{
-
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     externalNativeBuild {
