@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <h1> 测试网页 </h1>
+
+    <script>
+        // Android需要调用的方法
+        function callJS(){
+            alert("Android调用了JS的callJS方法");
+        }
+
+        function callAndroid(){
+        	 // 由于对象映射，所以调用test对象等于调用Android映射的对象
+         	 var platform = window.Android || ocModel;
+	         if (window.Android) {
+	              Android.hello("wangsongbin Android");
+	         } else if (ocModel) {
+	              ocModel.hello("wangsongbin IOS")
+	         }
+         }
+
+         function callAndroid2(){
+            /*约定的url协议为：js://webview?arg1=111&arg2=222*/
+            document.location = "js://webview?position=1";
+         }
+
+         function clickprompt(){
+             // 调用prompt（）
+             var result=prompt("js://webview?arg1=111&arg2=222");
+             alert("demo " + result);
+         }
+
+    </script>
+</head>
+<body>
+//点击按钮则调用callAndroid函数
+<hr/>
+<button type="button" id="button1" onclick="callAndroid()">点击调用Android api</button>
+<hr/>
+<button type="button" id="button2" onclick="callAndroid2()">点击测试ShouldOverridUrl</button>
+<hr/>
+<button type="button" id="button3" onclick="clickprompt()">点击测试prompt</button>
+</body>
+</html>

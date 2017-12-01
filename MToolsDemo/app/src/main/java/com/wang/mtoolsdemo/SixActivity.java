@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
 import com.wang.mtoolsdemo.common.bean.ProgressBean;
 import com.wang.mtoolsdemo.common.download.DownloadChangeObserver;
 import com.wang.mtoolsdemo.common.util.LogUtil;
@@ -31,6 +32,7 @@ import com.wang.mtoolsdemo.common.view.NumberProgressBar;
 
 import java.io.File;
 import java.io.FileDescriptor;
+import java.util.HashMap;
 
 /**
  * Created by dell on 2017/11/24.
@@ -63,12 +65,28 @@ public class SixActivity extends PermissionActivity{
         }
     };
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);//统计时长
+        MobclickAgent.onPageStart("" + getClass().getSimpleName());//统计界面
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+        MobclickAgent.onPageEnd("" + getClass().getSimpleName());
+    }
+
     DownloadChangeObserver mDownloadChangeObserver = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_6);
+
+        MobclickAgent.setCatchUncaughtExceptions(true);
 
         checkNeedPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE}, null, null);
@@ -77,10 +95,18 @@ public class SixActivity extends PermissionActivity{
         btn_install.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MobclickAgent.onEvent(SixActivity.this, "event_install");
+
+                HashMap<String, String> product = new HashMap<String, String>();
+                product.put("type", "book");
+                product.put("price", "" + 100);
+                MobclickAgent.onEvent(SixActivity.this, "event_install", product);
+                MobclickAgent.onEventValue(SixActivity.this, "onclik", product, 10);
                 MHorizontalProgressDialog mHorizontalProgressDialog
                         = new MHorizontalProgressDialog(SixActivity.this);
                 mHorizontalProgressDialog.show();
 
+                throw new NullPointerException();
 //                StringBuilder sb = new StringBuilder(Environment.getExternalStorageDirectory().getAbsolutePath());
 //                sb.append("/MToolsDemo/file")
 //                        .append(File.separator)

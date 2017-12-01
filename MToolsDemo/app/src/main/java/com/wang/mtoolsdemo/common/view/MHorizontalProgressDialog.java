@@ -3,7 +3,6 @@ package com.wang.mtoolsdemo.common.view;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.TextView;
 

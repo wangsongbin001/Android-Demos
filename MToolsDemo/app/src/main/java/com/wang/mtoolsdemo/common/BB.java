@@ -28,4 +28,90 @@ public class BB {
             "http://img2.fengniao.com/product/156/707/ceaaE3uUMnl8k.jpg",
             "http://img2.fengniao.com/product/156/699/ceLQ6w6UxHcIw.jpg",
     };
+
+//    public class AlertDialog extends Dialog implements DialogInterface {
+//        private AlertController mAlert;
+//
+//        AlertDialog(Context context, @StyleRes int themeResId, boolean createContextThemeWrapper) {
+//            super(context, createContextThemeWrapper ? resolveDialogTheme(context, themeResId) : 0,
+//                    createContextThemeWrapper);
+//
+//            mWindow.alwaysReadCloseOnTouchAttr();
+//            mAlert = AlertController.create(getContext(), this, getWindow());
+//        }
+//
+//        @Override
+//        public void setTitle(CharSequence title) {
+//            super.setTitle(title);
+//            mAlert.setTitle(title);
+//        }
+//
+//        public void setMessage(CharSequence message) {
+//            mAlert.setMessage(message);
+//        }
+//
+//        public static class Builder {
+//            private final AlertController.AlertParams P;
+//
+//            public Builder(Context context, int themeResId) {
+//                P = new AlertController.AlertParams(new ContextThemeWrapper(
+//                        context, resolveDialogTheme(context, themeResId)));
+//            }
+//
+//            public Builder setTitle(CharSequence title) {
+//                P.mTitle = title;
+//                return this;
+//            }
+//
+//            public Builder setMessage(@StringRes int messageId) {
+//                P.mMessage = P.mContext.getText(messageId);
+//                return this;
+//            }
+//
+//            public AlertDialog create() {
+//                // Context has already been wrapped with the appropriate theme.
+//                final AlertDialog dialog = new AlertDialog(P.mContext, 0, false);
+//                P.apply(dialog.mAlert);
+//                dialog.setCancelable(P.mCancelable);
+//                if (P.mCancelable) {
+//                    dialog.setCanceledOnTouchOutside(true);
+//                }
+//                dialog.setOnCancelListener(P.mOnCancelListener);
+//                dialog.setOnDismissListener(P.mOnDismissListener);
+//                if (P.mOnKeyListener != null) {
+//                    dialog.setOnKeyListener(P.mOnKeyListener);
+//                }
+//                return dialog;
+//            }
+//
+//            public AlertDialog show() {
+//                final AlertDialog dialog = create();
+//                dialog.show();
+//                return dialog;
+//            }
+//        }
+//
+//        @Override
+//        protected void onCreate(Bundle savedInstanceState) {
+//            super.onCreate(savedInstanceState);
+//            mAlert.installContent();
+//        }
+//
+//        public void installContent() {
+//            int contentView = selectContentView();
+//            mWindow.setContentView(contentView);
+//            setupView();
+//        }
+//
+//        private int selectContentView() {
+//            if (mButtonPanelSideLayout == 0) {
+//                return mAlertDialogLayout;
+//            }
+//            if (mButtonPanelLayoutHint == AlertDialog.LAYOUT_HINT_SIDE) {
+//                return mButtonPanelSideLayout;
+//            }
+//            // TODO: use layout hint side for long messages/lists
+//            return mAlertDialogLayout;
+//        }
+//    }
 }
