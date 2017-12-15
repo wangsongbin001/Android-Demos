@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eae1e1"
+    android:paddingTop="10dp"
+    android:paddingBottom="30dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_qq"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="-5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_qq"/>
+
+            <TextView
+                android:id="@+id/iv_share_qq_text"
+                android:layout_below="@+id/iv_share_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="QQ"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_qzone"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="-5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_qzone"/>
+
+            <TextView
+                android:id="@+id/iv_share_qzone_text"
+                android:layout_below="@+id/iv_share_qzone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="QQ空间"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_wechat"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="-5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_wechat"/>
+
+            <TextView
+                android:id="@+id/iv_share_wechat_text"
+                android:layout_below="@+id/iv_share_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="微信"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_wxcircle"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="-5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_wxcircle"/>
+
+            <TextView
+                android:id="@+id/iv_share_wxcircle_text"
+                android:layout_below="@+id/iv_share_wxcircle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="朋友圈"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_sina"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="-5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_sina"/>
+
+            <TextView
+                android:id="@+id/iv_share_sina_text"
+                android:layout_below="@+id/iv_share_sina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="微博"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_copy"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="-5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_copy"/>
+
+            <TextView
+                android:id="@+id/iv_share_copy_text"
+                android:layout_below="@+id/iv_share_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="复制"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_share_cancel"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="6dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/umeng_socialize_cancel"/>
+
+            <TextView
+                android:id="@+id/iv_share_cancel_text"
+                android:layout_below="@+id/iv_share_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="取消"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

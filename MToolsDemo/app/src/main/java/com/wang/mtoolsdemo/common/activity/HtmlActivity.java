@@ -13,12 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -27,7 +25,9 @@ import com.wang.mtoolsdemo.common.util.LogUtil;
 import com.wang.mtoolsdemo.common.util.NetUtil;
 import com.wang.mtoolsdemo.common.util.VerifyUtil;
 import com.wang.mtoolsdemo.common.view.CommonTitlebarBuilder;
+import com.wang.mtoolsdemo.common.view.WebViewEx;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -56,13 +56,14 @@ public class HtmlActivity extends AppCompatActivity {
     public static final String KEY_TITLE = "key_title";
 
     private ProgressBar progressBar;
-    private WebView webView;
+    private WebViewEx webView;
     private LinearLayout ll_container;
     WebSettings webSettings;
     private Activity mActivity;
     private String url = "http://10.138.60.131:10000/paydayloan.html#/noQuota/46190/2/B";
     private String title;
     CommonTitlebarBuilder mBuilder;
+    private ArrayList<String> searchHistory = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,13 +100,13 @@ public class HtmlActivity extends AppCompatActivity {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
-        webView = new WebView(mActivity);
+        webView = new WebViewEx(mActivity);
         webView.setLayoutParams(params);
         ll_container.addView(webView);
 
         setupWebView();
 //        webView.loadUrl(url);
-        webView.loadUrl("file:///android_asset/test2.html");
+        webView.loadUrl("file:///android_asset/test_1.html");
     }
 
     private void setupWebView() {
@@ -137,10 +138,11 @@ public class HtmlActivity extends AppCompatActivity {
         webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
 
-        webView.setWebViewClient(new WebViewClient() {
+        webView.setWebViewClient(new WebViewEx.WebViewClientEx() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 LogUtil.i("wangsongbin", "url:" + url);
+                searchHistory.add(url);
                 if (TextUtils.isEmpty(url)) {
                     return true;
                 }
@@ -188,10 +190,12 @@ public class HtmlActivity extends AppCompatActivity {
 //                }
             }
         });
-        webView.setWebChromeClient(new WebChromeClient() {
+        webView.setWebChromeClient(new WebViewEx.WebChromeClientEx() {
+
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
+                LogUtil.i("wangsongbin", "progress:" + newProgress);
                 if(progressBar != null){
                     progressBar.setProgress(newProgress);
                 }
@@ -223,10 +227,12 @@ public class HtmlActivity extends AppCompatActivity {
 
             @Override
             public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+                LogUtil.i("wangsongbin", "message:" + message);
                 // 调用prompt（）
                 Uri uri = Uri.parse(message);
                 // 如果url的协议 = 预先约定的 js 协议
                 // 就解析往下解析参数
+                LogUtil.i("wangsongbin", "url:" + url);
                 if (uri.getScheme().equals("js")) {
 
                     // 如果 authority  = 预先约定协议里的 webview，即代表都符合约定的协议
@@ -248,7 +254,7 @@ public class HtmlActivity extends AppCompatActivity {
             }
 
         });
-        webView.addJavascriptInterface(new Android2Js(), "jsInterface");// "Android");//AndroidtoJS类对象映射到js的test对象
+        webView.addJavascriptInterface(new JSInterface(), "Android");// "Android");//AndroidtoJS类对象映射到js的test对象
         webView.setVerticalScrollBarEnabled(false);
     }
 
@@ -274,12 +280,16 @@ public class HtmlActivity extends AppCompatActivity {
             ((ViewGroup) webView.getParent()).removeView(webView);
             webView.destroy();
             webView = null;
+            searchHistory.clear();
+            searchHistory = null;
         }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()
+                && searchHistory.size() > 0) {
+            searchHistory.remove(searchHistory.size() - 1);
             webView.goBack();
             return true;
         }

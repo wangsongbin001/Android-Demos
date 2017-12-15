@@ -24,7 +24,6 @@ public class Android2Js extends Object {
         Log.i("wangsongbin", "arg1:" + arg1 + ",arg2:" + arg2 + ",arg3:" + arg3);
     }
 
-    @JavascriptInterface
     public void getContents(String data){
         Log.i("wangsongbin", "data:" + data);
     }

