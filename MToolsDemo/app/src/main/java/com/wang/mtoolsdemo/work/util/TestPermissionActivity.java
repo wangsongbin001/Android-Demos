@@ -1,6 +1,7 @@
 package com.wang.mtoolsdemo.work.util;
 
 import android.Manifest;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -38,5 +39,6 @@ public class TestPermissionActivity extends PermissionActivity {
 //                startAppSetting();
 //            }
 //        });
+
     }
 }

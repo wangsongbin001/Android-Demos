@@ -34,7 +34,7 @@ public static final int *;
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-#ÓÑÃË·ÖÏí´úÂë»ìÏı
+#å‹ç›Ÿåˆ†äº«ä»£ç æ··æ·†
 -dontshrink
 -dontoptimize
 -dontwarn com.google.android.maps.**
@@ -124,7 +124,7 @@ public static final int *;
 -keep class com.linkedin.** { *; }
 -keep class com.android.dingtalk.share.ddsharemodule.** { *; }
 -keepattributes Signature
-##ÓÑÃËÍÆËÍ£¬´úÂë»ìÏı
+##å‹ç›Ÿæ¨é€ï¼Œä»£ç æ··æ·†
 -dontwarn com.taobao.**
 -dontwarn anet.channel.**
 -dontwarn anetwork.channel.**
@@ -150,3 +150,7 @@ public static final int *;
 -keep public class **.R$*{
    public static final int *;
 }
+#ç™¾åº¦åœ°å›¾æ··æ·†å¤„ç†
+-keep class com.baidu.** {*;}
+-keep class vi.com.** {*;}
+-dontwarn com.baidu.**
