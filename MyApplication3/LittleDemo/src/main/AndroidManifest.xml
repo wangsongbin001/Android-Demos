@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.songbinwang.littledemo" >
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.BODY_SENSORS"></uses-permission>
+
+    //声明权限
+    <permission android:name="me.xiaosongshu.READ" android:protectionLevel="normal"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <meta-data
+            android:name="com.example.songbinwang.littledemo.glide.MyGlideModule"
+            android:value="GlideModule"></meta-data>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+
+        <activity android:name=".controller.PackageManagerActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true">
+
+        </activity>
+
+        <activity android:name=".controller.ScrollViewActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".controller.VideoPlayerActivity"
+            android:screenOrientation="landscape">
+
+        </activity>
+
+        <activity android:name=".videoplayer.MediaPlayerActivity">
+        </activity>
+
+        <activity android:name=".controller.GyroTestActivity">
+        </activity>
+
+        <activity android:name=".loadingview.TestLoadingViewActivity">
+
+        </activity>
+
+        <activity android:name=".notification.NotificationActivity">
+        </activity>
+
+        <activity android:name="com.example.songbinwang.littledemo.appwidget.AppWidgetActivity">
+
+        </activity>
+
+        <activity android:name=".anim.MatrixActivity">
+
+        </activity>
+
+        <activity android:name=".anim.AnimationActivity">
+
+        </activity>
+
+        <activity android:name=".MainMenuActivity">
+
+        </activity>
+
+        <activity android:name=".WelcomeActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".TestServiceActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+	
+        <activity android:name=".db.DBMainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".service.MyService">
+            <intent-filter>
+                <action android:name="com.example.songbinwang.littledemo.service.MyService"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".appwidget.AppWidgetClockProvider">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_clock">
+            </meta-data>
+
+            <intent-filter>
+                <action android:name="com.example.littledemo.appwidgetclockprovider"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE_OPTIONS"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_RESTORED"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_DELETED"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".appwidget.TestReceive">
+            <intent-filter>
+                <action android:name="com.example.littledemo.appwidgetclockprovider"></action>
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:authorities="com.example.littledemo.MyContentPrivider"
+            android:name="com.example.songbinwang.littledemo.MyContentPrivider"/>
+	    
+        <provider
+            android:authorities="com.example.littledemo"
+            android:name=".db.MyContentProvider"
+            android:readPermission="me.xiaosongshu.READ"
+            android:grantUriPermissions="true"
+            android:exported="true"/>
+    </application>
+
+</manifest>

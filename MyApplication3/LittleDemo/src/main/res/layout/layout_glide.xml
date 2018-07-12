@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_glide"
+        android:layout_width="match_parent"
+        android:contentDescription="@null"
+        android:layout_height="250dp" />
+
+    <ImageView
+        android:id="@+id/iv_picasso"
+        android:layout_width="match_parent"
+        android:contentDescription="@null"
+        android:layout_height="250dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_debug"
+        android:layout_width="80dp"
+        android:layout_height="46dp" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动"/>
+
+</LinearLayout>

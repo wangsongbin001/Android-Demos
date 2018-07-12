@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">CSDNApp</string>
+
+    <!--登录界面-->
+    <string name="lg_et_nmae">用户名(6-12个字符)</string>
+    <string name="lg_et_psd">密码(6-8个字符)</string>
+    <string name="lg_et_confirm_psd">确认密码</string>
+    <string name="lg_tv_psd_back">找回密码</string>
+    <string name="lg_btn_login">登录</string>
+    <string name="lg_btn_register">注册</string>
+    <string name="lg_tv_register_txt">MyCSDN用户注册界面</string>
+    <string name="lg_et_phone">手机号</string>
+    <string name="lg_et_verify_code">验证码</string>
+    <string name="lg_tv_get_verify_code">发送验证码</string>
+    <string name="lg_tv_psd_by_sms">短信验证找回密码</string>
+    <string name="lg_tv_sms_verify_success">短信验证成功</string>
+    <string name="lg_btn_verify">验证</string>
+    <string name="lg_et_new_psd">新密码</string>
+    <string name="lg_et_confirm_new_psd">确认新密码</string>
+    <string name="lg_et_change_psd">修改密码</string>
+
+    <string name="topbar_tag">CSDN资讯</string>
+
+    <string-array name="tag_titles">
+        <item>业界</item>
+        <item>移动</item>
+        <item>研发</item>
+        <item>程序员杂志</item>
+        <item>云计算</item>
+    </string-array>
+
+    <!--XListView-->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+</resources>

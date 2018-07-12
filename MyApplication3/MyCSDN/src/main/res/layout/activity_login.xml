@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splashscreen_bg"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_splash"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/splashscreen_logo"
+        android:contentDescription="@null"/>
+
+    <LinearLayout
+        android:layout_below="@+id/iv_splash"
+        android:layout_width="250dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/black_rect_bg">
+
+            <ImageView
+                android:id="@+id/iv_user_login"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerInside"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/user_login"/>
+
+            <EditText
+                android:id="@+id/et_user_login"
+                android:layout_marginLeft="30dp"
+                android:padding="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="输入CSDN账号"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/black_rect_bg">
+
+            <ImageView
+                android:id="@+id/iv_psd_login"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerInside"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/lock_login"/>
+
+            <EditText
+                android:id="@+id/et_psd_login"
+                android:layout_marginLeft="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:background="@android:color/transparent"
+                android:hint="输入密码"/>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="登录"
+            android:background="@drawable/gray_select_rect_bg"
+            android:textSize="18sp"
+            android:textColor="@color/ff_white"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:padding="2dp"
+            android:layout_height="46dp">
+
+            <TextView
+                android:id="@+id/tv_create_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="创建账号"/>
+
+            <TextView
+                android:id="@+id/tv_forget_psd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="忘记密码"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/iv_weixin_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/weixin_login_new"
+            android:layout_gravity="center_vertical|left"/>
+
+        <ImageView
+            android:id="@+id/iv_weibo_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/weibo_login_new"
+            android:layout_gravity="center_vertical|center_horizontal"/>
+
+        <ImageView
+            android:id="@+id/iv_qq_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/qq_login_new"
+            android:layout_gravity="center_vertical|right"/>
+    </FrameLayout>
+
+</RelativeLayout>

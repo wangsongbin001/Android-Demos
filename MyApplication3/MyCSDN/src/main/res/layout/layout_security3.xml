@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wang.csdnapp.view.SecurityLayout3 xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="设置新密码："
+        android:gravity="center_vertical"/>
+
+    <EditText
+        android:id="@+id/et_psd"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:paddingLeft="@dimen/et_paddingleft"
+        android:background="@drawable/black_rect_bg"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="10dp"
+        android:text="确定"
+        android:textSize="18sp"
+        android:textColor="@color/ff_white"
+        android:background="@drawable/gray_select_rect_bg"/>
+
+
+
+</com.wang.csdnapp.view.SecurityLayout3>

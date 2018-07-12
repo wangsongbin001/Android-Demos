@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="ff_white">#ffffffff</color>
+    <color name="aa_blue">#aa0099cc</color>
+    <color name="aa_gray">#aaaaaaaa</color>
+
+    <color name="player_seek_normal">#757575</color>
+
+    <!--setting-->
+    <color name="st_bg">#dfdede</color>
+
+    <!--video-->
+    <color name="list_divider_grey">#809b9b9b</color>
+    <color name="accent_blue">#FF4a90e2</color>
+    <color name="checkbox_frame_grey">#ff4a4a4a</color>
+    <color name="video_text_second_color">#ff9b9b9b</color>
+    <color name="video_player_top_bg">#80000000</color>
+
+    <!--资讯-->
+    <color name="white">#FFFFFFFF</color>
+    <color name="share_bg_color">#22000000</color>
+
+
+</resources>

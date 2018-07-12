@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/id_notify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通知"/>
+
+    <Button
+        android:id="@+id/id_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="更新进度"/>
+
+    <Button
+        android:id="@+id/id_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消通知"/>
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/id_iv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

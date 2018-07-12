@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.song.myweibo.widget.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drag_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/head_bg"
+    tools:context="com.song.myweibo.MainActivity">
+
+    <!--左边菜单的布局-->
+    <include layout="@layout/left_view_layout"></include>
+
+    <com.song.myweibo.widget.CustomRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eee"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_main_top_bar"></include>
+
+            <com.song.myweibo.widget.ViewPagerIndicator
+                android:id="@+id/id_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/transparentblue" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/id_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </com.song.myweibo.widget.CustomRelativeLayout>
+</com.song.myweibo.widget.DragLayout>

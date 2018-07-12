@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wang.csdnapp.view.SecurityLayout1 xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:text="登录账号"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:paddingLeft="@dimen/et_paddingleft"
+        android:background="@drawable/black_rect_bg"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:text="验证码"/>
+
+    <EditText
+        android:id="@+id/et_verifycode"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:paddingLeft="@dimen/et_paddingleft"
+        android:inputType="number"
+        android:background="@drawable/black_rect_bg"/>
+
+    <com.wang.csdnapp.view.LocalVerifyCode
+        android:id="@+id/localverifycode"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gray_select_rect_bg"
+        android:text="验证码"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="下一步"
+        android:textSize="18sp"
+        android:textColor="@color/ff_white"
+        android:background="@drawable/gray_select_rect_bg"/>
+
+</com.wang.csdnapp.view.SecurityLayout1>

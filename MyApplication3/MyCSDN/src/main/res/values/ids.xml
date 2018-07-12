@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="iamgeloader_tag_key">1001</integer>
+    <integer name="et_user">1002</integer>
+    <integer name="et_verify">1003</integer>
+
+    <integer name="menu_tag_key">1004</integer>
+
+</resources>

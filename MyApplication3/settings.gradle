@@ -1,0 +1,1 @@
+include ':app', ':LittleDemo', ':LiveInHand', ':MyWeiBo', ':MyCSDN', ':library'

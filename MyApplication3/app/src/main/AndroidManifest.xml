@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.songbinwang.myapplication" >
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="me.pengtao.READ"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:name=".MyApp"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+
+        <activity android:name=".FirstActivity">
+
+
+        </activity>
+
+        <activity android:name=".TestReceiverActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
+        <activity android:name=".TestSecondActivity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.testsecond"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <data android:mimeType="image/*"></data>
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name=".TestContnetProviderActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".download.MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".MyReceiver">
+            <intent-filter android:priority="99">
+                <action android:name="com.example.myapplication.MyReceiver"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".MyReceiver2">
+            <intent-filter android:priority="100">
+                <action android:name="com.example.myapplication.MyReceiver"></action>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".download.service.DownloadService"></service>
+
+
+    </application>
+
+</manifest>

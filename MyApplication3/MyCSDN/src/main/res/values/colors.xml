@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ded3d3</color>
+    <color name="colorPrimaryDark">#f9f6f6</color>
+    <color name="colorAccent">#c6c4bf</color>
+
+    <color name="actionbar_bg">#00A8F1</color>
+    <color name="actionbar_title_color">#faf8f8</color>
+
+    <color name="login_btn_text_color">#0fc4d9</color>
+    <color name="ff_white">#ffffff</color>
+
+    <color name="color_white">#ffffff</color>
+
+    <color name="status_bar_color">#5CACEE</color>
+
+    <color name="transparentblue">#445CACEE</color>
+
+    <color name="black">#000000</color>
+    <color name="nomalGray">#838B83</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="wangyebg">#f0f0f0</color>
+    <color name="white">#ffffff</color>
+    <color name="coffee">#622f1b</color>
+
+    <color name="verify_color1">#d1c4c1</color>
+    <color name="verify_color2">#dcb676</color>
+    <color name="verify_color3">#72d454</color>
+    <color name="verify_color4">#4aea9d</color>
+    <color name="verify_color5">#4a8dea</color>
+    <color name="verify_color6">#6f4aea</color>
+    <color name="verify_color7">#d548dc</color>
+    <color name="verify_color8">#e13f77</color>
+    <color name="verify_color9">#e63b52</color>
+    <color name="verify_color0">#39282b</color>
+
+    <color name="gray_bg">#8f8e8e</color>
+    <color name="blue_deep">#484b4e</color>
+
+    <color name="menu_txt_gray">#a2a2a2</color>
+    <color name="menu_txt_white">#f7f0f0</color>
+    <color name="menu_item_select">#f9e61d1d</color>
+
+    <color name="read_line">#bcb3b3</color>
+</resources>

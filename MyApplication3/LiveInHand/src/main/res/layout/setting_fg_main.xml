@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/st_bg"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/setting_space">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ff_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_account_safe"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/actionbar_height"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/setting_image_height"
+                android:layout_height="@dimen/setting_image_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/setting_account_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="账户安全"
+                android:textSize="@dimen/setting_text_size" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="80dp"
+            android:background="@color/aa_gray"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_payment"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/actionbar_height"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/setting_image_height"
+                android:layout_height="@dimen/setting_image_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/setting_payment_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="支付方式"
+                android:textSize="@dimen/setting_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/setting_space"
+        android:background="@color/ff_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_system_setting"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/actionbar_height"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/setting_image_height"
+                android:layout_height="@dimen/setting_image_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/setting_system_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="系统设置"
+                android:textSize="@dimen/setting_text_size" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/setting_space"
+        android:background="@color/ff_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_checkupdate"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/actionbar_height"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/setting_image_height"
+                android:layout_height="@dimen/setting_image_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/setting_update_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="检查更新"
+                android:textSize="@dimen/setting_text_size" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="80dp"
+            android:background="@color/aa_gray"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_aboutus"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/actionbar_height"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/setting_image_height"
+                android:layout_height="@dimen/setting_image_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:src="@drawable/setting_aboutus_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="关于我们"
+                android:textSize="@dimen/setting_text_size" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

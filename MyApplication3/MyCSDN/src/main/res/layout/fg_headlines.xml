@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_topbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="36dp">
+
+        <ImageView
+            android:id="@+id/iv_drawer"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="2dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/drawer"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:text="头条"/>
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="6dp"
+            android:src="@drawable/read_add"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="50dp" />
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="6dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/search"/>
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_below="@+id/fl_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/read_line"></View>
+
+    <com.wang.csdnapp.view.ViewPagerIndicator
+        android:id="@+id/id_indicator"
+        android:layout_below="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/transparentblue" />
+
+    <View
+        android:id="@+id/v_line2"
+        android:layout_below="@+id/id_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/read_line"></View>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_pager"
+        android:layout_below="@+id/v_line2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

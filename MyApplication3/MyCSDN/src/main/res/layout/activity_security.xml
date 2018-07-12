@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="26dp"
+            android:layout_height="46dp"
+            android:src="@drawable/back_night"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_marginLeft="26dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:textSize="18dp"
+            android:layout_height="wrap_content"
+            android:text="取消"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="账户安全中心"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/fl_actionbar"
+            android:layout_gravity="bottom"
+            android:background="@color/nomalGray"/>
+
+    </FrameLayout>
+
+    <com.wang.csdnapp.view.SecurityLayoutContainer
+        android:id="@+id/fl_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true">
+
+    </com.wang.csdnapp.view.SecurityLayoutContainer>
+
+
+</RelativeLayout>

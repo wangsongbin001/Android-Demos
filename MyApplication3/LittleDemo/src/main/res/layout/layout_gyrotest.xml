@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/value1"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#4d4949"></View>
+
+    <TextView
+        android:id="@+id/value2"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#4d4949"></View>
+
+    <TextView
+        android:id="@+id/value3"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" />
+
+    <SeekBar
+        android:id="@+id/seekbar1"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="20dp"
+        android:maxHeight="4dp"
+        android:minHeight="4dp"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/progress_drawable"
+        android:thumb="@drawable/seekbar_thumb"/>
+
+    <SeekBar
+        android:id="@+id/seekbar2"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/progress_drawable2"
+        android:splitTrack="false"
+        android:thumb="@drawable/iphone_play_play_control"/>
+
+    <SeekBar
+        android:id="@+id/seekbar3"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content" />
+
+
+    <SurfaceView
+        android:id="@+id/sv_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</LinearLayout>

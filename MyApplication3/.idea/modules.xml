@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LittleDemo/LittleDemo.iml" filepath="$PROJECT_DIR$/LittleDemo/LittleDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiveInHand/LiveInHand.iml" filepath="$PROJECT_DIR$/LiveInHand/LiveInHand.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyApplication3.iml" filepath="$PROJECT_DIR$/MyApplication3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyCSDN/MyCSDN.iml" filepath="$PROJECT_DIR$/MyCSDN/MyCSDN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyWeiBo/MyWeiBo.iml" filepath="$PROJECT_DIR$/MyWeiBo/MyWeiBo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+    </modules>
+  </component>
+</project>

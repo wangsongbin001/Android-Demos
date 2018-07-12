@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/ll_input"
+        android:text="@string/lg_tv_register_txt"
+        android:layout_marginBottom="40dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="wangsongbin"
+            android:hint="@string/lg_et_nmae"/>
+
+        <EditText
+            android:id="@+id/et_psd"
+            android:layout_width="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="000000"
+            android:hint="@string/lg_et_psd"/>
+
+        <EditText
+            android:id="@+id/et_confirm_psd"
+            android:layout_width="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="000000"
+            android:hint="@string/lg_et_confirm_psd"/>
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="15210095469"
+            android:inputType="number"
+            android:hint="@string/lg_et_phone"/>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_verify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:maxLines="1"
+                android:text="732817"
+                android:hint="@string/lg_et_verify_code"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorAccent"></View>
+
+            <TextView
+                android:id="@+id/tv_get_verify_code"
+                android:layout_width="80dp"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/login_btn_text_color"
+                android:layout_height="wrap_content"
+                android:text="@string/lg_tv_get_verify_code"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/button_login"
+                android:textColor="@color/ff_white"
+                android:text="@string/lg_btn_register" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

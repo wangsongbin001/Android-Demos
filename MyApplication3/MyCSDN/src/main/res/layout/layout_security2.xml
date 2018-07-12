@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wang.csdnapp.view.SecurityLayout2 xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:text="手机号找回密码"/>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:gravity="center_vertical"
+        android:text="输入手机号码"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:paddingLeft="@dimen/et_paddingleft"
+        android:inputType="number"
+        android:background="@drawable/black_rect_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="46dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_verify_code"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="46dp"
+            android:paddingLeft="@dimen/et_paddingleft"
+            android:inputType="number"
+            android:background="@drawable/black_rect_bg"/>
+
+        <Button
+            android:id="@+id/btn_get_verifycode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/blue_select_rect_bg"
+            android:text="获取验证码"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="下一步"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/ff_white"
+        android:background="@drawable/gray_select_rect_bg"/>
+</com.wang.csdnapp.view.SecurityLayout2>

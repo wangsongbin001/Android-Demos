@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/actionbar_bg"
+    android:layout_height="42dp">
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:background="@drawable/actionbar_btn_back_bg"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:maxWidth="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/btn_back"
+        android:layout_centerVertical="true"
+        android:textColor="@color/actionbar_title_color"
+        android:textSize="@dimen/actionbar_textsize"
+        android:text="用户登录"/>
+
+</RelativeLayout>

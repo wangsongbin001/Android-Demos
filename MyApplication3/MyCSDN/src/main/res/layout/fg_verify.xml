@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lg_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/fl_input_container"
+        android:text="@string/lg_tv_psd_by_sms"
+        android:layout_marginBottom="40dp"/>
+
+    <FrameLayout
+        android:id="@+id/fl_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:id="@+id/ll_input_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="15210095469"
+                android:hint="@string/lg_et_phone"/>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_verify_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/lg_et_verify_code"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/colorAccent"></View>
+
+                <TextView
+                    android:id="@+id/tv_get_verify_code"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/login_btn_text_color"
+                    android:text="@string/lg_tv_get_verify_code"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_new_psd"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="123456"
+                android:hint="@string/lg_et_new_psd"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/fl_input_container"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/lg_et_change_psd"
+            android:background="@drawable/button_login"
+            android:textColor="@color/ff_white"/>
+
+    </FrameLayout>
+
+</RelativeLayout>
+

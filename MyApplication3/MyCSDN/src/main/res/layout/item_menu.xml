@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="46dp">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/read"/>
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:textSize="12sp"
+        android:layout_marginLeft="60dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:text="头条"
+        android:textColor="#a2a2a2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+
+</FrameLayout>

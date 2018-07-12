@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.wang.csdnapp.view.LocalVerifyCode
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:background="@drawable/gray_select_rect_bg"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下载"/>
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止下载"/>
+
+    <Button
+        android:id="@+id/btn_rxjava"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rxjava"/>
+
+    <ImageView
+        android:id="@+id/iv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_tosecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to second"/>
+
+</LinearLayout>

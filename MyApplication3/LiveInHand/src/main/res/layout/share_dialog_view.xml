@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/share_content_height"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_share_weixin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_share_weixin"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:src="@drawable/share_weixin_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="微信"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_pengyouquan"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_share_pengyouquan"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:src="@drawable/share_pengyouquan_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="朋友圈"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_qq"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_share_qq"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:src="@drawable/share_qq_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="QQ"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_share_xinlang"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_share_xinlang"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:src="@drawable/share_xinlang_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="新浪"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_qqkongjian"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_share_qqkongjian"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:src="@drawable/share_qqroom_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="QQ空间"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_copy"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_share_copy"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:padding="5dp"
+                    android:src="@drawable/share_copy_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:text="复制链接"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_weight="1.5">
+
+            <ImageView
+                android:id="@+id/iv_share_close"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:padding="5dp"
+                android:src="@drawable/share_close"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

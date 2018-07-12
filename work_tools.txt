@@ -1,0 +1,173 @@
+在putty里面可以用vncserver,查看vnc登录时用的端口号
+
+新建文件夹
+mkdir m168
+
+代码同步
+repo init --repo-url _proj_gerrit_git-repo.git -u _proj_gerrit_mtk_manifest.git -b lp-5.0-m168
+repo sync
+
+build命令
+.build_envsetup.sh
+lunch full_pptv_l-eng
+make -j8
+
+
+服务器：
+cd packages_apps_Camera2
+repo sync .
+######git branch -d test1 (删除本地分支test1)
+git checkout -b test1 (本地创建自己的分支test1)
+
+git checkout remote_suning_ef168 跳转到对应服务器的分支
+git checkout suning_ef168  检出对应服务器的代码
+windows:
+拷贝服务器端_packages_apps_Camera2 到windows 并与ecplise 关联
+ 
+
+开始修改文件
+
+
+拷贝修改的文件到服务器端_packages_apps_Camera2
+
+
+服务器：
+git status (查看当前状态)
+git diff (查看自己的修改)
+git add . (添加修改的文件到缓存)(有删除则 git add --all)
+git commit -am "PPOS-*****: *******" （提交修改日志信息）
+
+git push alps test1:refs_for_lp-5.0-m168 (提交本地分支test1到服务器分支lp-5.0-m168)
+git push suning test822:refs_for_lp-5.0-m168
+git push suning test828:refs_for_lp-5.1-ef168
+git push alps 分支名:refs_for_lp-5.1-ef168
+(如果出现unpacker error，则变为git push --no-thin alps snv831:refs_for_lp-5.0-m168）
+
+在原来的基础上二次提交：
+git add .
+git commit --amend
+:wq 
+git push alps HEAD:refs_for_lp-5.1-ef168
+
+(git log -p (+**.java))
+
+冲突解决：
+repo sync .(git checkout alps_lp-5.0-m168)
+git cherry-pick s1014
+vi 修改
+git add .
+git commit -am "PPOS-*****: *******"
+git push alps HEAD:refs_for_lp-5.1-ef168
+----------------------------------------------
+
+git remote __查找服务代码 
+git br -a  __查看当前项目应该上传的服务器
+
+登陆网页10.11.28.86:8080_   open状态下找到自己的提交添加reviewer （yingpei@pptv.com）
+
+
+
+
+
+备注：
+
+git checkout <file_name> (回退上一次的修改，前提是没有加到缓存里面的修改）
+
+git rm -r <要删除的文件或目录>
+（这两部操作都需要在git add . 之前操作） 
+
+==========
+git push alps test1:refs_for_lp-5.1-ef168 (提交本地分支test1到服务器分支lp-5.1-ef168)
+==========
+
+去空格命令：
+find ._ -name "*.java" |xargs -i sed -i 's_\x09_ _g' {}
+
+find ._ -name "*.java" |xargs -i sed -i 's_ *$__' {}
+
+提交代码之前每个文件都要执行以下格式化代码的命令：
+find ._ -name "CameraFilter.java" | xargs -i fromdos {}
+find ._ -name "CameraFilter.java" |xargs -i sed -i 's_ *$__' {}              __空格
+find ._ -name "CameraFilter.java" | xargs -i sed -i 's_\x09_    _g' {}
+
+sed 's_\r__g' -i UploadImageService.java
+注意：XXX.xxx  可以是XXX.java 也可以是XXX.xml
+
+
+DownloadImageService
+搜索：
+grep -rl "onPermissionCheck" *
+
+安装apk
+adb root
+adb remount
+adb push PPTVVideoPlayer.apk _system_app_PPTVVideoPlayer_
+adb push SNVideoPlayer.apk _system_app_SNVideoPlayer_
+adb push PPTV3D.apk  _system_app_PPTV3D_
+adb reboot
+
+git checkout suning_lp-5.1-ef168
+
+__重置恢复
+git reset --hard
+
+__数据库
+adb pull _data_data_com.android.gallery3d_databases_gallery.db D:_
+
+
+:\BOX\platform_key>						java -jar signapk.jar platform.x509.pem platform.pk8 launcher-debug.apk PPTVLauncher.apk
+:\BOX\platform_key>						adb push E:\BOX\platform_key\PPTVLauncher.apk system/app
+:\BOX\platform_key>						adb reboot
+:\BOX\platform_key>						adb connect 172.19.148.143
+onnected to 172.19.148.143:5555
+:\BOX\platform_key>						adb root
+dbd is already running as root
+:\BOX\platform_key>						adb remount
+emount succeeded
+:\BOX\platform_key>						adb logcat -v time >1013.log
+
+
+首次提交代码：
+git add . 
+git commit -am "BOXUPGRADE-1: 备注信息"
+git remote (获得远程分支库名如：origin或者是ppbox)
+git push  远程分支库名 本地分支名：refs/for/远程分支名
+		如：git push ppbox dev1014:refs/for/beijing-1s-dev
+
+adb shell screenrecord /sdcard/demo.mp4 //录制视频
+adb shell screencap -p | sed 's/\r$//' > screen.png  //截图
+
+解压 tar zxvf 文件名.tar.gz
+压缩 tar zcvf 文件名.tar.gz 目标名
+
+如果想搜索目录里所有文件，包括子目录的话，并且在结果中显示行号，可以用以下命令
+grep -nr ro.build.id
+
+java -jar signapk.jar platform.x509.pem platform.pk8 launcher_v4-debug.apk PPTVLauncher.apk
+
+com.pptv.setting/.SystemInfoSetting
+
+
+
+
+
+mSelectedAccessPoint=
+updateConnectionState DetailedState =
+
+
+ffmpeg -t 5 -ss 01 -i notifi.mp4 -s 320x400  notifi.gif
+
+
+mm WallpaperPlayerServiceLib.aar -B
+
+ppbox_jni.jar必删除
+
+
+find . -name "***.java"
+grep xxx -irn
+
+
+
+
+
+

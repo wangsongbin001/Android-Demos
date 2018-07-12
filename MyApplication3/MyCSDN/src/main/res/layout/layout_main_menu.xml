@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wang.csdnapp.view.MainMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/blue_deep"
+    android:orientation="vertical"
+    android:id="@+id/main_menu">
+
+    <RelativeLayout
+        android:layout_width="240dp"
+        android:layout_height="160dp">
+
+        <com.wang.csdnapp.view.CircleImageView
+            android:id="@+id/circle_iv_account"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="6dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/white_circlr_bg"
+            android:src="@drawable/aa2"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/circle_iv_account"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#e1dfd9"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:text="小松鼠"/>
+
+            <TextView
+                android:id="@+id/tv_c_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textColor="#ea5612"
+                android:gravity="center_vertical"
+                android:text="119C币"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="240dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/lv_left_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="240dp"
+        android:layout_height="100dp">
+
+        <LinearLayout
+            android:id="@+id/ll_night_day"
+            android:layout_width="86dp"
+            android:layout_gravity="center"
+            android:background="@drawable/gray_empty_rect_bg"
+            android:layout_height="30dp">
+
+            <ImageView
+                android:id="@+id/iv_night_day"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginLeft="4dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                android:src="@drawable/night"/>
+
+            <TextView
+                android:id="@+id/tv_night_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#a2a2a2"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:text="夜间模式"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</com.wang.csdnapp.view.MainMenuLayout>
