@@ -9,6 +9,5 @@ import android.content.Context;
 public class CommonApp {
 
     public void onCreate(Context context){
-
     }
 }

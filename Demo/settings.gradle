@@ -1,1 +1,1 @@
-include ':app', ':bizcommon'
+include ':app', ':bizcommon', ':anotationLib'
