@@ -1,10 +1,13 @@
 package com.wangsb.app;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.wangsb.app.annotation.AnnotationActivity;
 import com.wangsb.app.proxy.Animal;
 import com.wangsb.app.proxy.AnimalProxy;
 import com.wangsb.app.proxy.Fly;
@@ -13,6 +16,7 @@ import com.wangsb.app.proxy.Run;
 import com.wangsb.app.retention.InjectView;
 import com.wangsb.app.retention.OnClick;
 import com.wangsb.app.retention.RetentionUtil;
+import com.wangsb.common.annotation.MRouter;
 import com.wangsb.common.util.MsgUtil;
 
 import java.lang.annotation.Retention;
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MRouter.init();
+
         MainActivity.class.getDeclaredFields();//获取成员变量
         MainActivity.class.getDeclaredMethods();//获取成员方法
         MainActivity.class.getDeclaredConstructors();//获取构造函数
@@ -37,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         RetentionUtil.injectEvent(this);
         btn1.setText("按钮1");
         btn2.setText("按钮2");
+
+
     }
 
-    @OnClick({R.id.btn_1, R.id.btn_2})
+    @OnClick({R.id.btn_1, R.id.btn_2, R.id.btn_3})
     public void onClick(View view){
         switch(view.getId()){
             case R.id.btn_1:
@@ -47,6 +55,21 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_2:
                 MsgUtil.showMsg(this, "click button 2");
+                break;
+            case R.id.btn_3:
+//                Intent intent = new Intent();
+//                ComponentName componentName = new ComponentName("com.wangsb.app", "com.wangsb.app.annotation.AnnotationActivity");
+//                intent.setComponent(componentName);
+//                startActivity(intent);
+
+//                try {
+//                    Class clazz = Class.forName("com.wangsb.app.annotation.AnnotationActivity");
+//                    Intent intent = new Intent(this, clazz);
+//                    startActivity(intent);
+//                } catch (ClassNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+                MRouter.build("test1").go(this);
                 break;
         }
     }
