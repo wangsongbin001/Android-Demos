@@ -1,1 +1,1 @@
-include ':app', ':bizcommon', ':annotationDeal', ':annotation'
+include ':app', ':bizcommon', ':annotationDeal', ':annotation', ':MApkPlugin', ':plugin'

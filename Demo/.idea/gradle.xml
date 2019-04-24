@@ -8,10 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/MApkPlugin" />
             <option value="$PROJECT_DIR$/annotation" />
             <option value="$PROJECT_DIR$/annotationDeal" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/bizcommon" />
+            <option value="$PROJECT_DIR$/plugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

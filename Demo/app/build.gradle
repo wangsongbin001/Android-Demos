@@ -1,5 +1,34 @@
 apply plugin: 'com.android.application'
 
+class TestTaskExtension{
+    Closure nameMap = null;
+    String destDir = null;
+}
+//1,简单的插件创建
+class MPlugin implements Plugin<Project>{
+    @Override
+    void apply(Project project) {
+        project.extensions.create('testTaskconf', TestTaskExtension);
+        project.task('testTask')<<{
+            println 'hello world'
+            def closure = project['testTaskconf'].nameMap;
+            closure('wow !')
+            println project['testTaskconf'].destDir
+        }
+    }
+}
+apply plugin:  MPlugin
+apply plugin:  'wangsb_packplugin'
+
+testTaskconf {
+    nameMap { name ->
+        println 'hello, ' + name
+        return name
+    }
+    destDir 'your-distribution-directory'
+}
+
+
 android {
     compileSdkVersion 26
     defaultConfig {
