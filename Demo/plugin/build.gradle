@@ -10,12 +10,12 @@ dependencies {
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: uri('./repo'))
-        pom.groupId = 'com.wangsb.group'
-        pom.artifactId = 'packplugin'
-        pom.version = '1.0.0'
+        repository(url: uri(LOCAL_REPO_URL))
+        pom.groupId = PROJ_GROUP
+        pom.artifactId = PROJ_ARTIFACTID
+        pom.version = PROJ_VERSION
     }
 }
-
+//gradlew -p plugin/ clean build uploadArchives
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"

@@ -17,15 +17,23 @@ class MPlugin implements Plugin<Project>{
         }
     }
 }
-apply plugin:  MPlugin
-apply plugin:  'wangsb_packplugin'
 
+apply plugin:  MPlugin
 testTaskconf {
     nameMap { name ->
         println 'hello, ' + name
         return name
     }
     destDir 'your-distribution-directory'
+}
+
+apply plugin:  'wangsb_packplugin'
+apkdistconf {
+    nameMap { name ->
+        println 'hello, ' + name
+        return '20190424' + name
+    }
+    destDir './temp/'
 }
 
 
